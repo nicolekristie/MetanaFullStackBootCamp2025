@@ -1,0 +1,67 @@
+body {
+    background-color:powderblue;
+}
+
+
+h1 {
+    color: green;
+    text-align: center;
+
+}   
+
+h2 {
+    color:darkblue;
+}
+
+
+p {
+    border: 5px solid green;
+    width: 540px;
+}
+
+
+
+div {
+    background-color: yellow ;
+    padding: 25px;
+    outline-style: solid;
+    outline-color: green;
+}
+
+.row {
+    display: flex;
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+    text-align: center;
+
+  }
+  /*Add a background image to the top right hand corner */
+  body {
+  background-image: url("../images/treeimage.avif");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  margin-right: auto;
+  background-attachment: fixed;
+  background-size: 400px;
+  padding-bottom: 200px;
+  background-position: right 125px
+    }
+
+
+    .toBe {
+        text-shadow: 0 0 3px #ff0000;
+        margin-bottom: non-zero;
+        font-style: italic;
+    }
+
+    .btn:hover{
+        background-color: #f44336; /* Red */ 
+        color: grey;
+        width: 300px;
+        /*transition-duration: 1s;*/
+
+    }

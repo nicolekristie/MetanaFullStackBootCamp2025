@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./styles/HomePage.css" />
+  </head>
+  <body>
+    <!-- Create a Navigation bar-->
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <h2>Welcome</h2>
+        <h4>Guest</h4>
+      </div>
+
+      <div class="nav-right">
+        <div class="mood-list-container">
+          <ul>
+            <li>Mood:</li>
+            <li>
+              <input
+                type="image"
+                name="mood-image"
+                id="mood-image"
+                value="&#128512;"
+              />
+            </li>
+            <li>🌧️</li>
+            <li id="profile">Profile</li>
+          </ul>
+        </div>
+
+        <div class="mood-form-container">
+          <form class="mood-form">
+            <div class="emoji-container">
+              <div class="emoji" id="emoji">&#128543;</div>
+              <p class="mood" id="mood">Worried</p>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="10"
+                class="emoji-slider"
+                id="range"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Login form................................................. -->
+    <main class="main-container">
+      <div class="form-popup" id="myform">
+        <!-- <div class="form-container">  -->
+        <form id="form" class="form-container">
+          <button id="close-btn">X</button>
+          <div class="close-btn">&times;</div>
+          <div class="form-element">
+            <h1 id="welcome-msg">Welcome Back!</h1>
+            <h3 id="detail-msg">Please enter your details to login</h3>
+            <input
+              type="text"
+              class="input-field"
+              name="user-name"
+              id="user-name"
+              placeholder="Name"
+            /><br /><br />
+          </div>
+          <div class="input-control">
+            <input
+              type="text"
+              class="input-field"
+              name="user-email"
+              id="user-email"
+              placeholder="Email"
+            /><br /><br />
+            <div class="error"></div>
+          </div>
+          <div class="input-control">
+            <input
+              type="text"
+              class="input-field"
+              name="user-pasword"
+              id="user-password"
+              placeholder="Password"
+            />
+            <div class="error"></div>
+          </div>
+          <button type="submit" id="login-btn" name="login">Login</button>
+
+          <!-- </button>  -->
+          <!-- </div> 
+                </div> -->
+        </form>
+      </div>
+
+      <!-- Edit Profile form............................................ -->
+      <div class="profile-container">
+        <!-- form container -->
+        <div class="profile-form">
+          <button id="profile-close-button">X</button>
+          <form id="profile-form-element">
+            <p1 id="profile-heading">Profile Settings</p1><br /><br />
+            <label for="userName"><b>Name</b></label>
+            <input type="text" id="profile-name" name="uname" />
+            <label for="email"><b>Email</b></label>
+            <input type="text" id="profile-email" name="email" /><br /><br />
+            <button type="submit" id="save-btn" name="save-btn">
+              Save Changes</button
+            ><br /><br />
+            <button type="submit" id="logout-btn" name="login-btn">
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Today's Task ----------------------------------------------- -->
+
+      <!-- <div class="flex-container"> -->
+<div class="today-tasks">
+          <h3>Ready for Today?</h3>
+          <h6>You have 3 tasks planned for today</h6>
+
+          <!-- Container for buttons -->
+    <div class="button-container">
+            <button type="submit" class="task-button" id="task-btn">
+              + Add Task
+            </button>
+            <!-- Css set to hide form > this is the container to hold form-->
+         <div class="add-task" id="add-task-form">
+              <!-- form container -->
+            <div class="add-task-form">
+                <button id="close-button">X</button>
+                <div id="task-msg">Add a new task</div>
+                    <form id="task-form">
+                    <label for="task-name"></label>
+                    <input
+                        type="text"
+                        id="task-name"
+                        name="task-name"
+                        placeholder="Task name"
+                    /><br /><br />
+                    <label for="duration"></label>
+                    <input
+                        type="text"
+                        id="duration"
+                        name="task-duration"
+                        placeholder="Duration (in minutes)"
+                    /><br /><br />
+                    <label for="time-display"></label>
+                    <input
+                        type="time"
+                        id="time-display"
+                        name="time-display"
+                        placeholder="--:-- --"
+                    /><br /><br />
+                    <input type="submit" id="create-task" value="Create Task" />
+                    </form>
+            </div>
+        </div>
+            <button class="button" id="btn2">Complete All</button>
+            <button class="button" id="btn3">Show Completed</button>
+    </div>
+          <div>
+            <ul class="task-list-container">
+              <div id="t-list"></div>
+            </ul>
+          </div>
+
+</div>
+
+        <!-- Edit form container -->
+        <div class="edit-task" id="edit-task-form">
+          <button id="edit-task-close-btn">X</button>
+          <div id="edit-task-msg">Edit Task</div>
+          <form id="edit-task-form">
+            <label for="edit-task-name"></label>
+            <input
+              type="text"
+              id="edit-task-name"
+              name="edit-task-name"
+            /><br /><br />
+            <label for="edit-duration"></label>
+            <input
+              type="text"
+              id="edit-duration"
+              name="edit-task-duration"
+            /><br /><br />
+            <label for="edit-time-display"></label>
+            <input
+              type="time"
+              id="edit-time-display"
+              name="edit-time-display"
+              placeholder="--:-- --"
+            /><br /><br />
+            <input type="submit" id="edit-save-btn" value="Save Changes" />
+          </form>
+        </div>
+      </div>
+      <!-- Suggested Tasks -->
+      <div class="suggestedTaskContainer">
+        <h3>Suggested Tasks</h3>
+
+        <ul class="suggested-task-list">
+          <li class="suggested-task">
+            <div>
+              <p class="suggested-task-title" id="read">Read a Book</p>
+              <p class="suggested-task-minutes">45 mins</p>
+              <p class="suggested-task-time">12:43 PM</p>
+
+              <div class="suggested-mood-list">
+                <ul>
+                  <li>😀</li>
+                  <li id="base">Based on</li>
+                  <li id="mood">Mood</li>
+                  <li class="check-mark">☑</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li class="suggested-task">
+            <div>
+              <p class="suggested-task-title" id="meditate">Meditation</p>
+              <p class="suggested-task-minutes">15 mins</p>
+              <p class="suggested-task-time">12:43 PM</p>
+
+              <div class="suggested-meditation-list">
+                <ul>
+                  <li>😀</li>
+                  <li id="base">Based on</li>
+                  <li id="mood">Weather - Mostly Cloudy</li>
+                  <li class="check-mark">☑</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--     
+    </div>  -->
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,910 @@
+body{
+    margin: auto;
+    padding:auto;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+  }
+  
+  /* Basic styles for the navbar */
+  .navbar {
+    display:flex;
+    justify-content: space-between;
+    position: relative;
+    height: 150px;
+    background-color: #28a745;
+    border:5px solid red
+  }
+  
+  /* left navigation */
+
+ .nav-left {
+     position: relative;
+  }
+  
+  .nav-left h2 { 
+    position: relative;
+    color: white;  
+  }  
+  
+  .nav-left h4 { 
+    position: relative;
+    margin-top: 40px;
+    color: black;
+    font-style: italic;
+  } 
+
+  /* right navigation  */
+
+  .nav-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: 3px solid red;
+    width: 25%;
+  }
+
+  .mood-list-container{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid blue;
+    width: 80%;
+  }
+
+  .mood-list-container ul{
+    border: 2px solid red;
+    list-style: none;
+    width: 100%;
+
+  }
+
+  ul {
+    display: flex;
+    gap: 10px;
+
+  }
+
+  ul > li {
+    display: inline-block;
+    position: relative;
+    margin: 15px 0 10px 0;   
+  }
+
+
+
+
+  /* FORMS..............................................................................*/
+    
+  /* MOOD FORM......................... */
+
+  
+  .mood-form-container{
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+
+  .mood-form.active{
+    display: flex;
+  }
+
+  .mood-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  } 
+
+
+ .emoji-container{
+      width: 120%;
+      max-width: 300px;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 25px;
+      padding: 20px;
+      box-shadow: 0px 0px 3px 1px #777;
+  }
+
+  .emoji {
+    font-size: 25px;
+    margin: 0px;
+    text-align: center;
+    text-shadow: 0px opx 4px #555;
+  }
+
+  .mood {
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .emoji-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    max-width: 400px;
+    margin: 0;
+    background-color: #ccc;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+  }
+
+
+ .mood-image{
+  font-size: 20px; 
+ }
+
+/* ###################################### */
+
+.mood-form-container{
+  /* display:none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:100%;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.mood-form.active{
+  display: flex;
+}
+
+.mood-form {
+/* display: none; */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 10px;
+} 
+
+
+.emoji-container{
+  width: 120%;
+  max-width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 25px;
+  padding: 20px;
+  box-shadow: 0px 0px 3px 1px #777;
+}
+
+.emoji {
+font-size: 25px;
+margin: 0px;
+text-align: center;
+text-shadow: 0px opx 4px #555;
+}
+
+.mood {
+text-align: center;
+margin: 0px 0px 20px 0px;
+font-size: 20px;
+font-weight: bold;
+}
+
+.emoji-slider {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 10px;
+max-width: 400px;
+margin: 0;
+background-color: #ccc;
+padding: 0;
+outline: none;
+cursor: pointer;
+}
+
+
+ /* LOGIN FORM SECTION ..................................................*/
+  
+ .form-element.active{
+  display: flex;
+}
+
+
+.form-element {
+  transition: opacity 0.3s ease;
+}
+
+.form-element #welcome-msg{
+  position: relative;
+  margin-top: 5px;
+  color: black;
+  margin-bottom: 2px
+}
+
+.form-element #detail-msg{
+  position: relative;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  color: black;
+  gap: 2px
+}
+
+
+.form-container {
+  justify-content: center; 
+  position: fixed; 
+  height: 450px;
+  width:500px;
+  border: 3px solid #f1f1f1;
+  background-color: #322F2F;
+  display: none;
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  display: none;
+}
+
+.login-button-container{
+    background-color: blue;
+}
+
+.login-button-container button {
+    display:flex;
+    justify-content: left;
+    position: absolute;
+    justify-items:left;
+    width: 5%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-popup.active{
+    display: flex;
+}
+
+
+.form-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+} 
+
+
+.form-popup .close-btn {
+    color: black;
+    position: relative;
+    margin-bottom: -20px;
+    margin-left: 90%;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+
+h1, h2 {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.form-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+}
+
+.form-element button{
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50;
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.form-element input {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #454545;
+} 
+
+
+h2 {
+    text-align: top-left;
+    text-indent:-32em;
+}
+
+h3 {
+    padding: 2px;
+} 
+  
+  #close-btn{
+    display: flex;
+    justify-content: right;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 15px;
+  } 
+  
+
+  /* PROFILE FORM section................................................ */
+
+
+  
+  .profile-container{
+    display:none;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height:900px; 
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    gap: 20px
+  } 
+  
+  
+  
+  .profile-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 50rem;
+    margin-top: 25rem;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    height: 300px;
+    max-width: 80%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 15px
+  }  
+  
+  .profile-heading{
+    color: red;
+  }
+ 
+    #profile-close-button{
+      background-color: red;
+      color: black;
+      position: relative;
+      margin-bottom: -20px;
+      margin-left: 90%;
+      font-size: 18px;
+      font-weight: bolder;
+    } 
+  
+    .profile-container.active{
+      display: flex;
+    }
+  
+    .profile-container{
+      transition: opacity 0.3s ease;
+    }
+  
+  
+   button .save-btn{
+    color: greenyellow;
+    border-radius: 15px;
+   } 
+  
+/* 
+   EDIT ..................................................
+ */
+ /* Edit task form........................................... */
+  
+  
+  .edit-task{
+    display:none;
+    position: relative;
+    margin-right: 675px;
+    width: 300px;
+    height:200px;
+    background-color: transparent;
+    z-index: 1000;
+    border: 3px solid blue;
+    transform: translate(20%, 20%);
+  }
+  
+   .edit-task-form{
+    margin-left: 50rem;
+    margin-top: 25rem;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 80%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  
+  } 
+  
+  .edit-task #edit-task-msg{
+    color: white;
+    position: relative;
+    margin-top: -34px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+  } 
+  
+    .edit-task #edit-task-close-btn{
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 20px;
+      position: relative;
+      margin-left: 265px;
+      margin-top: 2px;
+    }
+  
+    .edit-task.active{
+      display: flex;
+    }
+ 
+    .edit-task{
+      transition: opacity 0.3s ease;
+    }
+    
+    .edit-task-title, .edit-task-time {
+      font-weight: bold;
+    }
+  
+    #edit-task-name,  #edit-duration, #edit-time-display{
+      font-size: 12px;
+      margin-left: 5px;
+      padding-left: 5px;
+      width: 200px;
+      height: 20px;
+      border: 25px;
+      color: black
+    }
+  
+    #edit-save-btn {
+      background: greenyellow;
+      color: black;
+      border-radius: 15px;
+      margin-left: 5px;
+      padding-left: 5px;
+      width: 200px;
+      height: 25px;
+    }
+  
+  
+/* #######################################################
+ */
+
+  /* Main Container */
+
+  .main-container{
+    display: flex;
+    flex-direction: row;
+    border: 4px solid red;
+    justify-content: space-between;
+    height: 600px;
+  }
+
+
+/* 
+ .flex-container {
+  display: flex;
+  border: 3px solid yellow;
+  justify-content: space-between;
+  padding: 20px;
+} */
+
+  
+  .today-tasks{
+    border: 5px solid red;
+    background: #2B2929;
+    color: limegreen;
+    border-radius: 15px;
+    padding: 15px;
+    width: 45%;
+  }
+  
+  .button-container, .task-button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  
+  } 
+  
+  #task-btn {
+      display: flex;
+      color: white;
+      background-color: #464040;
+      border-radius: 15px;
+    }
+  
+    #btn2, #btn3 {
+      display: flex;
+      position: relative;
+      color: black;
+      background-color: greenyellow;
+      border-radius: 15px;
+    
+    }
+  
+  
+  
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+
+    .task {
+      border: 2px solid blue;
+      background-color: #333;
+      color: white;
+      border-radius: 15px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  
+  #task-name{
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 10px;
+  }
+  
+  #time-display{
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 10px;
+  }
+  
+  #duration{
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 10px;
+  }
+  .add-task{
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+   .add-task-form{
+    margin-left: 50rem;
+    margin-top: 25rem;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 80%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  } 
+  
+  .add-task-form #task-msg{
+    color: black;
+    position: relative;
+    margin-top: -20px;
+    margin-bottom: 15px
+  }
+  
+    #close-button{
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 20px;
+      position: relative;
+      margin-left: 270px;
+      margin-top: -10px;
+    }
+  
+    .add-task.active{
+      display: flex;
+    }
+  
+    .add-task{
+      transition: opacity 0.3s ease;
+    }
+    
+    .task-title, .task-time {
+      font-weight: bold;
+    }
+  
+    .task-title{
+      font-size: 12px;
+    }
+  
+    .task-minutes {
+      color: gray;
+      font-size: 10px;
+    }
+  
+    .task-time{
+      font-size: 14px;
+    }
+  
+    input #create-task{
+      color: green
+    }
+/*   
+   SUGGESTED TASK CONTAINER...................................................... */
+
+    .suggestedTaskContainer{
+      display: flex;
+      flex-direction: column;
+      background: #2B2929;
+      border: 2px solid black;
+      border-radius: 15px;
+      padding: 40px;
+      width: 45%;
+      position: relative;
+      /* height: 400px */
+    }
+    
+    
+    .suggestedTaskContainer>h3 {
+      color: white;
+      font-size: 14px;
+      list-style: none;
+    }
+    
+    .suggested-task-list {
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      position: relative;
+    }
+    
+    .suggested-task {
+      border: 2px solid blue;
+      background-color: #333;
+      color: white;
+      border-radius: 15px;
+      padding: 10px;
+      margin-top: 10px;
+      list-style: none;
+    }
+    
+    
+    
+    .suggested-task-title, .suggested-task-time {
+      font-weight: bold;
+    }
+    
+    .suggested-task-title{
+      font-size: 12px;
+    }
+    
+    .suggested-task-minutes {
+      color: gray;
+      font-size: 10px;
+    }
+    
+    .suggestedtask-time{
+      font-size: 14px;
+    }
+    
+    #read, #mood {
+      color:goldenrod;
+      font-size: 12px;
+    }
+    
+    #meditate {
+      color:#28a745
+    }
+    
+
+
+     .suggested-mood-list{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      list-style: none;
+      position: absolute;
+      right: 100px;
+      top: 5px;
+    
+    }
+
+    .suggested-mood-list li {
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0;
+    
+    }
+    
+    #base {
+      color: gray;
+      font-size: 10px;
+      list-style: none;
+    
+    }
+    
+    .check-mark {
+      color:#28a745;
+      font-size: 20px;
+    }
+    
+    
+    #base {
+      color: gray;
+      font-size: 10px;
+      list-style: none;
+    
+    }
+    
+    .check-mark {
+      color:#28a745;
+      font-size: 20px;
+    }
+    
+    
+    .suggested-meditation-list{
+      display: flex;
+      list-style: none;
+      position: absolute;
+      right: 55px;
+      top:   15px;
+      padding-right: -40px;
+    
+    }
+    
+    #run-task-check-mark, #dont-run-task-check-mark, #bake-task-check-mark{
+      display: flex;
+      justify-content: flex-end; 
+      position: relative;
+      top: -85px
+    
+    }
+    
+    .suggested-meditation-list li {
+    
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0;
+    }
+    
+    .container {
+      display: flex;
+    }
+    
+    h2, h3, h4, h6 {
+      margin: 0;
+    } 
+  
+  h6{
+      color: gray
+   } 
+
+
+
+
+
+
+
+/* #################################### */
+
+/* .mood-container{
+  display:flex;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  border: 3px solid red;
+
+}
+
+
+.mood-slide-container {
+  display: flex;
+  align-items: center; 
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 115%;
+  height: 100%;
+  box-shadow: 0px 32px 40px -19px;
+  position: relative;
+  margin-left: -20px;
+  gap: 15px; 
+ } 
+
+ .value{
+  position: relative;
+  margin-bottom: -2.5em; 
+} 
+
+.mood-list-container{
+  position: relative;
+  padding:0 35px 0 35px;
+  margin-right: 20px;  
+  border: 2px solid purple;
+  list-style: none;
+}
+
+.mood-list-container li#profile{
+  color: red;
+}
+
+
+.mood-slide-container li {
+  border: 1px solid red
+}
+
+.emoji-mood-list {
+  display: flex; 
+  position: relative;
+  margin-top: 2px;
+}
+
+.emoji-mood-list #mood-text{
+  border: 2px solid red;
+  position: relative;
+  right: 0px;
+  margin-top: -12%;
+  margin-bottom: 80px;
+  margin-right: 0.5em;
+  text-align: center;
+  padding: 0.5em
+}
+
+
+.emoji-mood-list #mood {
+  border: 1px solid purple;
+  position: relative;
+  margin-top: 2%;
+  margin-bottom: 20%;
+  margin-right: 0.5em; 
+  text-align: center;
+  padding: 0.5em
+}
+
+
+#range{
+position: relative;
+margin-top: 10px;
+margin-bottom: 2%;
+border-radius: 15px;
+width:153px;
+height: 10px;
+-webkit-appearance: none;
+
+}  */
