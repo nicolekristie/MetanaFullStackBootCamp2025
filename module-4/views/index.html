@@ -203,73 +203,35 @@
             </ul>
           </div> -->
 
+        
 
-          <div id="taskData"></div>
-
-          <!-- index.hbs -->
+          <!-- <div id="taskData"></div> -->
+          <!-- index.hbs
           <script id="task-template" type="text/x-handlebars-template">
-            <h3>Tasks........</h3>
-            <ul id="taskItem">
-              {{#each tasks}}
-              <li>{{this.task}} - {{this.duration}} - {{this.taskTime}}</li>
+            <ul>
+              {{#each task}}
+                <li>{{this.taskName}} - {{this.taskDuration}} - {{}this.taskTime}</li>
               {{/each}}
-            </ul>
-          </script> 
+            </ul> -->
+              
+          <!-- </script>  -->
 
           <script type="text/javascript">
             let taskInfo = document.getElementById("task-template").innerHTML;
             let template = Handlebars.compile(taskInfo);
-
-            // const storedTaskName1 = localStorage.getItem('taskName');
-            // const storedTaskDuration1 = localStorage.getItem('taskDuration');
-            // const storedTaskTime1 = localStorage.getItem('taskTime');
-
-            // const taskFromStorage = localStorage.getItem('object')
-                 //get the string from localStorage
-              // const str = localStorage.getItem("object");
-
-         
-                    // Retrieve the object from storage
-            var retrievedObject = localStorage.getItem('object');
-
-            console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
-
-
-            // const str = localStorage.getItem(object);
-
-               //convert string to valid object
-            //    const parsedArr = JSON.parse(str);
-
-            // console.log(`string: ${str.taskName}`);
-            // console.log(`string: ${str}`)
-            
-
-
-            // const storedTaskName1 = localStorage.getItem('taskName');
-            // const storedTaskDuration1 = localStorage.getItem('taskDuration');
-            // const storedTaskTime1 = localStorage.getItem('taskTime');
-           
-           // const objectParsed = JSON.parse(taskFromStorage)
-       
-            // console.log(`items: ${storedTaskName1} ${storedTaskDuration1} ${storedTaskTime1}`)
-
-
-
+            const storedTaskName1 = localStorage.getItem('taskName');
+            const storedTaskDuration1 = localStorage.getItem('taskDuration');
+            const storedTaskTime1 = localStorage.getItem('taskTime');
 
             let taskData = template({
               tasks: [
-                // {task: storedTaskName1, duration: storedTaskDuration1, taskTime: storedTaskTime1}
-                 { task: "Study", duration: "1hr", taskTime: "2pm"}
-              
-              ],
-          
+                {task: storedTaskName1, duration: storedTaskDuration1, taskTime: storedTaskTime1}
+              ]
             });
-            document.getElementById("taskData").innerHTML += taskData
-           
+            document.getElementById("taskData").innerHTML += taskData;       
+          
           </script>
 
-  
 
           <div class="complete-task-list-container">
             <h3>Completed Tasks</h3>

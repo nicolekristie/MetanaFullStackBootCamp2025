@@ -215,6 +215,44 @@ cursor: pointer;
 
 
  /* LOGIN FORM SECTION ..................................................*/
+
+
+ .form-container {
+  display: flex; 
+  position: relative; 
+  height: 550px;
+  width:500px;
+  border: 5px solid green;
+  background-color: #322F2F;
+  z-index: 1000;
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px; 
+  padding-right: 5px;
+  display: none;
+}
+
+.form-element{
+  display: flex;
+  position: relative;
+  background-color: blue;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 450px;
+  /* margin-top: 0; */
+  gap: 20px
+}
+
+#form-input{
+border: 2px solid green;
+position: relative;
+width: 50%;
+}
+
+
   
  .form-element.active{
   display: flex;
@@ -227,8 +265,8 @@ cursor: pointer;
 
 .form-element #welcome-msg{
   position: relative;
-  margin-top: 5px;
-  color: black;
+  margin-top: -75px;
+  color: red;
   margin-bottom: 2px
 }
 
@@ -241,25 +279,10 @@ cursor: pointer;
 }
 
 
-.form-container {
-  justify-content: center; 
-  position: fixed; 
-  height: 450px;
-  width:500px;
-  border: 3px solid #f1f1f1;
-  background-color: #322F2F;
-  display: none;
-  margin-top: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 5px;
-  display: none;
-}
 
-.login-button-container{
+/* .login-button-container{
     background-color: blue;
-}
+} 
 
 .login-button-container button {
     display:flex;
@@ -269,80 +292,106 @@ cursor: pointer;
     width: 5%;
     cursor: pointer;
     border-radius: 5px;
-}
+} */
 
-.form-popup.active{
+/* .form-element h1,h3 {
+  color:green;
+} */
+
+/* .form-popup.active{
     display: flex;
-}
+} */
 
 
-.form-popup {
-    position: absolute;
+/* .form-popup { */
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
-} 
+    border-radius: 10px; */
+ 
+    /* position: absolute;
+    top: 10px;
+    left: 100px;
+    width: 300px;
+    height: 200ps;
 
 
-.form-popup .close-btn {
+
+
+
+}  */
+
+/* 
+.form-container .close-btn {
     color: black;
     position: relative;
     margin-bottom: -20px;
     margin-left: 90%;
     font-size: 18px;
     font-weight: bolder;
-}
+} */
 
 
-h1, h2 {
+/* h1, h2 {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
-}
+    position: relative; */
+/* } */
 
-.form-element{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-}
 
-.form-element button{
+/* .form-element #login-btn{
     padding: 10px;
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
     border: none;
-    color: white;
+    color: green;
     cursor: pointer;
     background-color: #4CAF50;
     width: 100%;
     height: 35px;
     font-size: 16px;
     text-align: center;
-}
+} */
 
-.form-element input {
+/* .form-element input {
     display: flex;
     width: 100%;
     margin-bottom: 10px;
     padding: 5px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px;
+    background-color: #454545;
+    border: 3px solid red;
+}   */
+
+/* //lastest */
+
+ /* .form-element input-field {
+    /* display: flex; */
+    /* position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd; 
     border-radius: 5px;
     background-color: #454545;
-} 
+    border: 3px solid purple; */
+/* }     */
 
 
-h2 {
+
+/* h2 {
     text-align: top-left;
     text-indent:-32em;
-}
+} */
 
-h3 {
+/* h3 {
     padding: 2px;
-} 
+}  */
   
   #close-btn{
     display: flex;
@@ -355,6 +404,59 @@ h3 {
     cursor: pointer;
     font-size: 15px;
   } 
+
+ /* Weather form section............................ */
+
+ .weather-container{
+  display: flex; 
+  position: relative; 
+  height: 350px;
+  width:500px;
+  border: 5px solid green;
+  background-color: #322F2F;
+  z-index: 1000;
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px; 
+  padding-right: 5px;
+  display: none;
+
+ }
+
+
+ .weather-form-element .active{
+  display: flex;
+}
+
+
+.weather-form-element {
+  transition: opacity 0.3s ease;
+}
+
+#weather-heading{
+  position: relative;
+  margin-top: -75px;
+  color: red;
+  margin-bottom: 2px
+}
+
+#weather-close-button{
+  color:red;
+}
+
+#w-list{
+  flex-direction: column;
+  list-style: none;
+  padding: 25px;
+  color: greenyellow;
+
+}
+
+
+
+
+
   
 
   /* PROFILE FORM section................................................ */
@@ -520,22 +622,23 @@ h3 {
   }
 
 
-/* 
+
  .flex-container {
   display: flex;
+  position: relative;
   border: 3px solid yellow;
   justify-content: space-between;
   padding: 20px;
-} */
+  width: 100%;
+}
 
   
   .today-tasks{
-    border: 5px solid red;
     background: #2B2929;
     color: limegreen;
     border-radius: 15px;
     padding: 15px;
-    width: 45%;
+    width: 50%;
   }
   
   .button-container, .task-button {
@@ -596,12 +699,12 @@ h3 {
       border-radius: 10px;
   }
   .add-task{
-    display:none;
+    display:none;  
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height:100%;
+    /* width: 100%;
+    height:100%; */
     background-color: transparent;
     justify-content: center;
     align-items: center;
@@ -667,6 +770,42 @@ h3 {
     input #create-task{
       color: green
     }
+
+    .task-status-container{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-direction: column;
+      border: 3px solid red;
+      justify-content: space-around;
+      height: 500px;
+    }
+
+    .task-list-container{
+      margin: 0;
+      height: 250px;
+      border: 3px solid red;
+      list-style: none;
+      border-radius: 15px;
+      padding-left: 5px;
+      
+    }
+
+    ul li{
+      list-style: none;
+      font-style: 17px;
+      padding: 12px 8px 12px 50px;
+      cursor: pointer;
+    }
+
+
+    .complete-task-list-container{
+      border: 3px solid blue;
+      height: 250px;  
+      list-style: none;   
+      padding-left: 5px;
+      border-radius: 15px;
+    }
 /*   
    SUGGESTED TASK CONTAINER...................................................... */
 
@@ -677,9 +816,8 @@ h3 {
       border: 2px solid black;
       border-radius: 15px;
       padding: 40px;
-      width: 45%;
+      width: 50%;
       position: relative;
-      /* height: 400px */
     }
     
     
