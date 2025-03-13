@@ -1,7 +1,3 @@
-
-const slider = document.getElementById("range");
-const value = document.querySelector('.value');
-const moodValue = document.getElementById("mood-value");
 //task
 const taskButton = document.getElementById("task-btn");
 const taskForm = document.getElementById("add-task");
@@ -18,14 +14,13 @@ const editTaskTime = document.getElementById("edit-time-display");
 const editSaveBtn = document.getElementById("edit-save-btn");
 const editCloseBtn = document.getElementById("edit-task-close-btn");
 const closeButton = document.getElementById("close-button");
-let date = new Date();
-// let currentTime = date.toISOString().substring(11 , 16);
-// document.getElementById('time-display').value = currentTime;
+
 const profile = document.getElementById("profile");
 const formElement = document.querySelector(".form-element");
 const inputField = document.querySelector(".input-field")
-const moodForm = document.querySelector(".mood-form");
+const moodForm = document.querySelector(".mood-form-container");
 const moodImage = document.getElementById("mood-image");
+const moodCloseBtn = document.getElementById("mood-form-close-btn");
 //Login Form
 const loginForm = document.querySelector(".form-container");
 const loginBtn = document.getElementById("login-btn");
@@ -52,10 +47,14 @@ const storedTaskDuration = localStorage.getItem('taskDuration');
 const emoji = document.getElementById('emoji');
 const mood = document.getElementById('mood');
 const sliderValue = document.getElementById('range');
+const emojiCloseBtn = document.getElementById('emoji-close-btn');
+const emojiForm = document.getElementById('emoji-mood-form');
 //weather api
 const url = 'http://api.weatherapi.com/v1/current.json?key=c194c9f95a1d428b8b2213157250503&q=New%20York&aqi=no';
 const weatherIcon = document.getElementById("weather-icon");
-const weatherForm = document.querySelector(".weather-container");
+//weather-form-container
+// const weatherForm = document.querySelector(".weather-container");
+const weatherForm = document.querySelector(".weather-form-container");
 const weatherCloseBtn = document.getElementById("weather-close-button");
 
 
@@ -103,10 +102,10 @@ const isValidEmail = (email) => {
         );
 };
 
-loginForm.addEventListener('input', (e) => {
-    e.preventDefault();
-    validateInputs();
-});
+// loginForm.addEventListener('input', (e) => {
+//     e.preventDefault();
+//     validateInputs();
+// });
 
 const setError = (element, message) => {
     const inputControl = element.parentElement;
@@ -207,6 +206,9 @@ moodImage.addEventListener("click", function () {
     }
 })
 
+emojiCloseBtn.addEventListener('click', () => {
+    emojiForm.style.display = "none";
+});
 
 function setTaskLocalStorage() {
 
@@ -260,11 +262,6 @@ function sliderChange(val) {
     document.getElementById("output").innerHTML = val;
 }
 
-slider.addEventListener("oninput", () => {
-    moodValue.innerHTML = slider.value;
-});
-
-
 //Validation
 const validateInputs = () => {
     if (email.value === "" || email.value === null) {
@@ -301,15 +298,6 @@ function displayEditTaskForm() {
     taskName.value = storedTaskName;
     taskDuration.value = storedTaskDuration;
     setTaskLocalStorage();
-
-    // Toggle the visibility of the form
-    // if (editTaskForm.style.display === "none") {
-    //     taskForm.style.display = "block";
-    //     setTaskLocalStorage();
-    // } else {
-    //     editTaskForm.style.display = "none";
-    // }
-
 }
 
 closeButton.addEventListener("click", () => {
@@ -322,7 +310,6 @@ document.getElementById("task-form").addEventListener("submit", function (event)
     const storedTaskDuration = localStorage.getItem('taskDuration');
     const storedTaskTime = localStorage.getItem('taskTime');
     const taskComponents = [storedTaskName, storedTaskDuration, storedTaskTime]
-
 
 });
 //save task details
