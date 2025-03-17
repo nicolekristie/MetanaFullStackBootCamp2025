@@ -250,6 +250,7 @@ height: 60%;
   width: 30%; 
   height: 80%;
   z-index: 1000;
+  justify-content: center;
  }
 
 
@@ -262,15 +263,24 @@ height: 60%;
   transition: opacity 0.3s ease;
 }
 
+.weather-icon{
+  display: flex;
+  justify-content: center;
+
+}
+
 #weather-heading{
   position: relative;
   margin-top: -75px;
-  color: red;
-  margin-bottom: 2px
+  color: white;
+  margin-bottom: 2px;
+  font-size: 25px;
+
 }
 
 #weather-close-button{
-  color:red;
+  color: green;
+  justify-content: end;
 }
 
 #w-list{
@@ -281,7 +291,14 @@ height: 60%;
 
 }
 
+#weather-image, #celcius {
+  font-size: 30px;
+}
 
+#weather-condition, #humidity{
+  font-size: 15px;
+  color: lightgray
+}
 
 
 
@@ -360,13 +377,13 @@ height: 60%;
   .edit-task{
     display:none;
     position: relative;
-    margin-right: 675px;
     width: 300px;
     height:200px;
-    background-color: transparent;
+    margin-top: -450px;
+    margin-left: 500px;
+    background-color: gray;
     z-index: 1000;
-    border: 3px solid blue;
-    transform: translate(20%, 20%);
+    border: 3px solid red;
   }
   
    .edit-task-form{
@@ -435,10 +452,6 @@ height: 60%;
       height: 25px;
     }
   
-  
-/* #######################################################
- */
-
   /* Main Container */
 
   .main-container{
@@ -447,8 +460,6 @@ height: 60%;
     justify-content: space-between;
     height: 100%;
   }
-
-
 
  .flex-container {
   display: flex;
@@ -532,8 +543,6 @@ height: 60%;
     position: fixed;
     top: 0;
     left: 0;
-    /* width: 100%;
-    height:100%; */
     background-color: transparent;
     justify-content: center;
     align-items: center;
@@ -611,12 +620,15 @@ height: 60%;
     }
 
     .task-list-container{
-      margin: 0;
-      height: 250px;
-      border: 3px solid red;
+      display: flex;
+      margin-top: 10px;
+      justify-content: left;
+      height: 300px;
+      border: 3px solid blue;
       list-style: none;
       border-radius: 15px;
-      padding-left: 5px;
+      padding-left: 15px;
+      gap: 10rem;
       
     }
 
@@ -630,11 +642,36 @@ height: 60%;
 
     .complete-task-list-container{
       border: 3px solid blue;
-      height: 250px;  
+      height: 300px;  
+      margin: 10px;
       list-style: none;   
       padding-left: 5px;
       border-radius: 15px;
     }
+
+    #taskData{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 40px;
+      margin-left: -215px;
+      list-style: none;
+      margin-bottom: 10px;
+    }
+
+
+    #completeTaskData{
+      text-decoration: line-through;
+    }
+
+    .show-complete{
+      display:none
+    }
+
+
+
+
+
 /*   
    SUGGESTED TASK CONTAINER...................................................... */
 
@@ -673,7 +710,6 @@ height: 60%;
       list-style: none;
       height: 25%
     }
-    
     
     
     .suggested-task-title, .suggested-task-time {

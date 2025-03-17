@@ -6,6 +6,9 @@ const taskDuration = document.getElementById("duration");
 const taskTime = document.getElementById("time-display");
 const createTaskBtn = document.getElementById("create-task")
 const taskListContainer = document.querySelector(".task-list-container");
+const showCompleteBtn = document.getElementById("btn-3");
+const completeListSection = document.getElementById("complete-task-list-container");
+
 //edit task
 const editTaskForm = document.querySelector(".edit-task")
 const editTaskName = document.getElementById("edit-task-name");
@@ -51,43 +54,64 @@ const emojiCloseBtn = document.getElementById('emoji-close-btn');
 const emojiForm = document.getElementById('emoji-mood-form');
 //weather api
 const url = 'http://api.weatherapi.com/v1/current.json?key=c194c9f95a1d428b8b2213157250503&q=New%20York&aqi=no';
-const weatherIcon = document.getElementById("weather-icon");
+const weatherIcon = document.getElementById("nav-weather-icon");
 //weather-form-container
 // const weatherForm = document.querySelector(".weather-container");
 const weatherForm = document.querySelector(".weather-form-container");
 const weatherCloseBtn = document.getElementById("weather-close-button");
+const weatherImage = document.getElementById("weather-image");
+const celcius = document.getElementById("celcius");
+const weatherCondition = document.getElementById("weather-condition");
+const humidity = document.getElementById("humidity")
 
 
 
-fetch(url)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
+function getWeatherData() {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Process the weather data
+            console.log(data);
+            const temperature = data.current.temp_f;
+            const condition = data.current.condition.text;
+            const humidity = data.current.humidity;
+            console.log(`Temperature: ${temperature}°F, condition: ${condition} and the humidity is: ${humidity}`);
+
+            if (condition=='Sunny'){
+                (weatherImage.innerHTML && weatherIcon.innerHTML == "☀️")
+            }
+            else if (condition=='rain'){
+                weatherImage.innerHTML && weatherIcon.innerHTML == "⛆"
+            }
+            else if (condition =="Overcast"){
+                weatherImage.innerHTML && weatherIcon.innerHTML =="☁️"
+            }
+
+            celcius.innerHTML = temperature;
+            weatherCondition.innerHTML = condition;
+            humidity.innerHTML = `Humidity: ${humidity}`;
     })
-    .then(data => {
-        // Process the weather data
-        console.log(data);
-        const temperature = data.current.temp_f;
-        const condition = data.current.condition.text;
-        const humidity = data.current.humidity;
-        console.log(`Temperature: ${temperature}°F, condition: ${condition} and the humidity is: ${humidity}`);
-    })
-    .catch(error => {
-        console.error('There was a problem fetching the weather data:', error);
-    });
-
+        .catch(error => {
+            console.error('There was a problem fetching the weather data:', error);
+        });
+}
 
 
 weatherIcon.addEventListener("click", () => {
     if (weatherForm.style.display === "none") {
         weatherForm.style.display = "block";
-        saveLoginDetails();
+        getWeatherData();
     } else {
         weatherForm.style.display = "none";
     }
 });
+
+
 
 weatherCloseBtn.addEventListener('click', () => {
     weatherForm.style.display = "none";
@@ -210,33 +234,7 @@ emojiCloseBtn.addEventListener('click', () => {
     emojiForm.style.display = "none";
 });
 
-function setTaskLocalStorage() {
 
-
-
-
-    taskForm.addEventListener('input', function (event) {
-
-        const object = {
-            taskName: taskName.value,
-            taskDuration: taskDuration.value,
-            taskTime: taskTime.value
-        }
-
-        //convert object to JSON string 
-        localStorage.setItem(object, JSON.stringify(object));
-
-    });
-}
-
-
-// function setTaskLocalStorage() {
-//     taskForm.addEventListener('input', function (event) {
-//         localStorage.setItem('taskName', taskName.value);
-//         localStorage.setItem('taskDuration', taskDuration.value);
-//         localStorage.setItem('taskTime', taskTime.value)
-//     });
-// }
 
 sliderValue.oninput = function () {
     let value = this.value;
@@ -258,9 +256,6 @@ sliderValue.oninput = function () {
     }
 }
 
-function sliderChange(val) {
-    document.getElementById("output").innerHTML = val;
-}
 
 //Validation
 const validateInputs = () => {
@@ -281,50 +276,22 @@ const validateInputs = () => {
     }
 }
 
-
-taskButton.addEventListener("click", () => {
-    checkTaskLocalStorage()
-});
-
-
 function displayTaskForm() {
     taskForm.style.display = "block";
-    setTaskLocalStorage();
 }
 
-function displayEditTaskForm() {
-    console.log("edit form function...")
-    editTaskForm.style.display = "block";
-    taskName.value = storedTaskName;
-    taskDuration.value = storedTaskDuration;
-    setTaskLocalStorage();
-}
+
+// showCompleteBtn.onclick = function() {displayCompleteSection()};
+
+// function displayCompleteSection() {
+//     completeListSection.style.display="block"
+// }
+
 
 closeButton.addEventListener("click", () => {
     taskForm.style.display = "none";
 })
 
-document.getElementById("task-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const storedTaskName = localStorage.getItem('taskName');
-    const storedTaskDuration = localStorage.getItem('taskDuration');
-    const storedTaskTime = localStorage.getItem('taskTime');
-    const taskComponents = [storedTaskName, storedTaskDuration, storedTaskTime]
-
-});
-//save task details
-editTaskForm.addEventListener('input', () => {
-    localStorage.setItem('taskName', editTaskName.value);
-    localStorage.setItem('taskDuration', editDuration.value);
-    localStorage.setItem('taskTime', editTaskTime.value);
-});
-
-editSaveBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    editTaskForm.style.display = "none";
-    alert("Information has been updated successfully");
-
-});
 
 editCloseBtn.addEventListener('click', () => {
     editTaskForm.style.display = "none";
@@ -334,6 +301,130 @@ function checkTaskLocalStorage() {
     if (storedTaskName && storedTaskDuration) {
         displayEditTaskForm();
     } else {
+        console.log("we are here")
         displayTaskForm();
     }
 }
+
+
+const storedTasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+
+
+function displayTasks() {
+    const taskList = document.getElementById("taskData");
+    taskList.innerHTML = ""; // Clear the list before adding new tasks
+
+    storedTasks.forEach((task, index) => {
+        const taskItem = document.createElement("div");
+        taskItem.classList.add("task-item");
+        taskItem.innerHTML = `
+            <li>${task.taskName} - ${task.taskDuration} - ${task.taskTime}</li>
+            <button onclick="displayEditTaskForm(${index})">Edit</button>
+            <button onclick="completeTasks(${index})">Complete</button>
+            <button onclick="deleteTask(${index})">Delete</button>
+        `;
+        taskList.appendChild(taskItem);
+    });  
+
+}
+
+
+function addTaskToStorage() {
+    const newTask = {
+        taskName: taskName.value,
+        taskDuration: taskDuration.value,
+        taskTime: taskTime.value
+    };
+
+    storedTasks.push(newTask); 
+    localStorage.setItem("tasks", JSON.stringify(storedTasks)); 
+    displayTasks();
+}
+
+
+function addcompleteTaskToStorage(index){
+    const newCompleteTask = {
+        taskName: taskName.value,
+        taskDuration: taskDuration.value,
+        taskTime: taskTime.value
+    };
+
+    completeStoredTasks.push(newCompleteTask); 
+    localStorage.setItem("completeTasks", JSON.stringify(completeStoredTasks)); 
+}
+
+
+
+function displayEditTaskForm(index) {
+    editTaskForm.style.display = "block";
+    const taskToDisplay = storedTasks[index];
+    editTaskName.value = taskToDisplay.taskName;
+    editDuration.value = taskToDisplay.taskDuration;
+    editTaskTime.value = taskToDisplay.taskTime
+    editTask(index);
+   
+}
+
+
+function editTask(index) {
+    const taskToEdit = storedTasks[index];
+    taskName.value = taskToEdit.taskName;
+    taskDuration.value = taskToEdit.taskDuration;
+    taskTime.value = taskToEdit.taskTime;
+    // Update the task when the user submits the form
+    editSaveBtn.onclick = function() {
+    updateTask(index);
+    };
+}
+
+
+function updateTask(index) {
+    storedTasks[index] = {
+        taskName: editTaskName.value,
+        taskDuration: editDuration.value,
+        taskTime: editTaskTime.value,
+    };
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    displayTasks(); // Update the UI
+}
+
+
+function deleteTask(index) {
+    storedTasks.splice(index, 1); 
+    localStorage.setItem("tasks", JSON.stringify(storedTasks)); 
+    displayTasks(); 
+}
+
+
+const completeStoredTasks = JSON.parse(localStorage.getItem("completeTasks")) || []; 
+
+
+function completeTasks(index){
+    //remove items from task section and place in complete section and strike through task
+    itemToAdd=storedTasks[index];
+    deleteTask(index);
+    const completeTaskList = document.getElementById("completeTaskData");
+    const completeTaskItem = document.createElement("div");
+    completeTaskItem.classList.add("c-list");
+    completeTaskItem.innerHTML = `
+        <li>${itemToAdd.taskName} - ${itemToAdd.taskDuration} - ${itemToAdd.taskTime}</li>
+    `;
+    completeTaskList.appendChild(completeTaskItem);
+    addcompleteTaskToStorage(index);
+
+}
+
+
+taskButton.addEventListener("click", () => {
+    taskForm.style.display = "block";   
+});
+
+
+createTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    addTaskToStorage(); 
+});
+
+
+displayTasks();
+

@@ -28,7 +28,7 @@
                 value="&#128512;"
               />
             </li>
-            <li id="weather-icon">🌧️</li>
+            <li id="nav-weather-icon">🌧️</li>
             <li id="profile">Profile</li>
           </ul>
         </div>
@@ -96,21 +96,49 @@
           </div>
         </form>
       </div>
+
+      <!-- Get user's Geo location -->
+      <script>
+        // position object
+        const successCallback = (position) => {
+          console.log(position);
+          let latitude = position.coords.latitude;
+          let longitude = position.coords.longitude;
+        };
+
+        const errorCallback = (error) => {
+          console.log(error);
+        };
+
+        navigator.geolocation.getCurrentPosition(
+          successCallback,
+          errorCallback,
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      </script>
+
+      <script>
+        document.getElementById("");
+      </script>
+
       <!-- Weather Form -->
 
       <!-- <div class="weather-container"> -->
       <!-- form container -->
       <div class="weather-form-container">
         <button id="weather-close-button">X</button>
-        <form id="weather-form-element">
-          <p1 id="weather-heading">Current Weather</p1><br /><br />
-          <ul id="w-list">
-            <li>Image</li>
-            <li>Celcius</li>
-            <li>Condition</li>
-            <li>Humidity</li>
-          </ul>
-        </form>
+
+        <div class="weather-icon">
+          <form id="weather-form-element">
+            <p1 id="weather-heading">Current Weather</p1><br /><br />
+            <ul id="w-list">
+              <li id="weather-image"></li>
+              <li id="celcius"></li>
+              <li id="weather-condition"></li>
+              <li id="humidity"></li>
+            </ul>
+          </form>
+        </div>
       </div>
 
       <!-- Edit Profile form............................................ -->
@@ -181,79 +209,23 @@
             <button class="button" id="btn2">Complete All</button>
             <button class="button" id="btn3">Show Completed</button>
 
-            <!-- button container?? -->
+            <!-- <div class="show-complete" id="show-complete-btn"> -->
+            <!-- <button class="button" id="btn3">Show Completed</button> -->
+            <!-- <div class="complete-task-list-container">
+                <h3>Completed Tasks</h3>
+                <div id="completeTaskData"></div>
+              </div> -->
+            <!-- </div> -->
           </div>
 
-          <!-- <div class=task-status-container> 
           <div class="task-list-container">
             <h3>Tasks</h3>
-            <ul id="t-list">
-              <div id="t-list"></div> 
-              <li>Task 1</li>
-              <li>Task 2</li>
-            </ul>
-          </div> -->
-
-          <div id="taskData"></div>
-
-          <!-- index.hbs -->
-          <script id="task-template" type="text/x-handlebars-template">
-            <h3>Tasks........</h3>
-            <ul id="taskItem">
-              {{#each tasks}}
-                <li>{{this.task}} - {{this.duration}} - {{this.taskTime}}</li>
-              {{/each}}
-            </ul>
-          </script>
-
-          <script type="text/javascript">
-            let taskInfo = document.getElementById("task-template").innerHTML;
-            let template = Handlebars.compile(taskInfo);
-
-            // const storedTaskName1 = localStorage.getItem('taskName');
-            // const storedTaskDuration1 = localStorage.getItem('taskDuration');
-            // const storedTaskTime1 = localStorage.getItem('taskTime');
-
-            // const taskFromStorage = localStorage.getItem('object')
-            //get the string from localStorage
-            // const str = localStorage.getItem("object");
-
-            // Retrieve the object from storage
-            var retrievedObject = localStorage.getItem("object");
-
-            console.log("retrievedObject: ", JSON.parse(retrievedObject));
-
-            // const str = localStorage.getItem(object);
-
-            //convert string to valid object
-            //    const parsedArr = JSON.parse(str);
-
-            // console.log(`string: ${str.taskName}`);
-            // console.log(`string: ${str}`)
-
-            // const storedTaskName1 = localStorage.getItem('taskName');
-            // const storedTaskDuration1 = localStorage.getItem('taskDuration');
-            // const storedTaskTime1 = localStorage.getItem('taskTime');
-
-            // const objectParsed = JSON.parse(taskFromStorage)
-
-            // console.log(`items: ${storedTaskName1} ${storedTaskDuration1} ${storedTaskTime1}`)
-
-            let taskData = template({
-              tasks: [
-                // {task: storedTaskName1, duration: storedTaskDuration1, taskTime: storedTaskTime1}
-                { task: "Study", duration: "1hr", taskTime: "2pm" },
-              ],
-            });
-            document.getElementById("taskData").innerHTML += taskData;
-          </script>
+            <div id="taskData"></div>
+          </div>
 
           <div class="complete-task-list-container">
             <h3>Completed Tasks</h3>
-            <ul>
-              <div id="c-list"></div>
-              <li></li>
-            </ul>
+            <div id="completeTaskData"></div>
           </div>
 
           <!-- Edit form container -->
