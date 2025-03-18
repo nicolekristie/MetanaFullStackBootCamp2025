@@ -1,3 +1,4 @@
+const displayName = document.getElementById('display-name');
 //task
 const taskButton = document.getElementById("task-btn");
 const taskForm = document.getElementById("add-task");
@@ -81,26 +82,30 @@ function getWeatherData() {
             const condition = data.current.condition.text;
             const humidity = data.current.humidity;
             console.log(`Temperature: ${temperature}°F, condition: ${condition} and the humidity is: ${humidity}`);
+        
 
-            if (condition=='Sunny'){
-                (weatherImage.innerHTML && weatherIcon.innerHTML == "☀️")
+            if (condition=='Sunny' || condition =='Clear'){
+                weatherImage.innerHTML = "☀️"
+                // weatherImage.innerHTML && weatherIcon.innerHTML === "☀️"
             }
             else if (condition=='rain'){
                 weatherImage.innerHTML && weatherIcon.innerHTML == "⛆"
             }
-            else if (condition =="Overcast"){
+            else if (condition =="cloudy"){
                 weatherImage.innerHTML && weatherIcon.innerHTML =="☁️"
+            }
+            else {
+                weatherImage.innerHTML && weatherIcon.innerHTML == "☀️"
             }
 
             celcius.innerHTML = temperature;
             weatherCondition.innerHTML = condition;
-            humidity.innerHTML = `Humidity: ${humidity}`;
+            humidity.innerHTML =`Humidity: ${humidity}`;
     })
         .catch(error => {
             console.error('There was a problem fetching the weather data:', error);
         });
 }
-
 
 weatherIcon.addEventListener("click", () => {
     if (weatherForm.style.display === "none") {
@@ -177,13 +182,16 @@ function displayProfileForm() {
 }
 
 profileSaveBtn.addEventListener('click', () => {
-    alert("Information has been updated successfully")
+    alert("Information has been updated successfully");
+    displayName.innerHTML=profileName.value;
+    
 });
 
 
-loginBtn.addEventListener("click", () =>
-    alert("Information has been save successfully")
-);
+loginBtn.addEventListener("click", () =>{
+    alert("Information has been save successfully"); 
+    displayName.innerHTML=profileName.value;
+});
 
 
 closeLoginFormBtn.addEventListener('click', closeLoginForm());

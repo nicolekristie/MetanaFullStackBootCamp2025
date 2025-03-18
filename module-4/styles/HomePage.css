@@ -241,6 +241,7 @@ height: 60%;
  /* Weather form section............................ */
 
  .weather-form-container{
+  display: relative;
   margin: 200px;
   padding: 10px;
   background-color: grey;
@@ -295,17 +296,22 @@ height: 60%;
   font-size: 30px;
 }
 
+#weather-image {
+  height: 20px;
+}
+
 #weather-condition, #humidity{
   font-size: 15px;
   color: lightgray
 }
 
+#humidity{
+  height: 20px;
+  color: black
+}
 
-
-  
 
   /* PROFILE FORM section................................................ */
-
 
   
   .profile-container{
