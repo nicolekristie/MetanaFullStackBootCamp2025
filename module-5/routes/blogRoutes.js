@@ -1,12 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-
-
-// import router from './routes/blogRoutes'
-
+import {Blog }from '../models/blog.js';
 
 const app = express();
+const express = require('express');
+const router = express.Router();
+import {Blog }from './models/blog.js';
 
 // connect to mongodb
 const dbURI='mongodb+srv://nicoleV:t3st1234@cluster0.ynize.mongodb.net/'
@@ -14,19 +14,19 @@ mongoose.connect(dbURI)    //pass in second param if you get deprecation warning
     .then((result) => app.listen(3000))     //listen for request only after db connection is complete
     .catch((err) => console.log(err));
 
-app.set('view engine', 'ejs');
+router.set('view engine', 'ejs');
 
 
 //middleware & static files
-app.use(express.static('public'))   //files in public folder are accessibles
+router.use(express.static('public'))   //files in public folder are accessibles
 
  //use middleware to parse data into an object that we can use on the request object
- app.use(express.urlencoded({extended: true}));
-app.use(morgan('dev'));  //3rd party middleware
+ router.use(express.urlencoded({extended: true}));
+router.use(morgan('dev'));  //3rd party middleware
 
 
 //mongoose and mongo sandbox routes
-app.get('/add-blog', (req, res) => {
+router.get('/add-blog', (req, res) => {
     const blog = new Blog({
         title: 'new blog ',
         snippet: 'about my new blog',
@@ -60,7 +60,7 @@ app.get('/add-blog', (req, res) => {
 })
 
 
-app.get('/all-blogs', (req, res) => {
+router.get('/all-blogs', (req, res) => {
     Blog.find()
         .then((result) => {
             res.send(result);
@@ -70,7 +70,7 @@ app.get('/all-blogs', (req, res) => {
         });
 })
 
-app.get('/single-blog', (req, res) => {
+router.get('/single-blog', (req, res) => {
     Blog.findById('67d1db4d37070186fbc0ff83')
     .then((result) => {
         res.send(result)
@@ -83,7 +83,7 @@ app.get('/single-blog', (req, res) => {
 
 //send a post request when you click submit from web form
 //create post handler
-app.post('/blogs', (req, res) => {
+router.post('/blogs', (req, res) => {
     console.log(req.body)  ///have to use the above middleware for form data
     const blog = new Blog(req.body);
     blog.save()
@@ -96,7 +96,7 @@ app.post('/blogs', (req, res) => {
    
 })
 
-app.get('/blogs/:id', (req, res) => {    //route parameter
+router.get('/blogs/:id', (req, res) => {    //route parameter
     const id = req.params.id;
     console.log(id);
     //retrieve item form database with the id
@@ -110,7 +110,7 @@ app.get('/blogs/:id', (req, res) => {    //route parameter
 })      
 
 
-app.delete('/blogs/:id', (req, res)=> {
+router.delete('/blogs/:id', (req, res)=> {
     const id = req.params.id;
     Blog.findByIdAndDelete(id)
     .then(result => {
@@ -121,15 +121,8 @@ app.delete('/blogs/:id', (req, res)=> {
     })
 })
 
-// app.use((req, res, next) => {
-//     console.log('new request made:');
-//     console.log('host: ', req.hostname);
-//     console.log('path: ', req.path);
-//     console.log('method: ', req.method);
-//     next();   //finished inside this middleware>move on to the next handler
-// });
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     const blogs = [
         { title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur' },
         { title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur' },
@@ -139,14 +132,8 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/about', (req, res) => {
+router.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
-//blog routes
-app.use(blogRoutes)
-
-//404 page
-app.use((req, res) => {
-    res.status(404).render('404', {title: '404'});
-})
+module.exports = router;
