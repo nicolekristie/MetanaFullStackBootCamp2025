@@ -1,0 +1,27 @@
+GET http://localhost:3000/creatures
+
+###
+
+GET http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+
+###
+POST http://localhost:3000/creatures
+Content-Type: application/json
+
+{
+    "name": "Drago",
+    "creatureType": "Dragon",
+    "creatureSkill": "fire-breathing",
+    "weakness": "underbelly"
+}
+
+###
+DELETE http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+
+###
+PATCH http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+Content-Type: application/json
+
+{
+    "name": "New Name"
+}
