@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-// const date = new Date()
+
 
 const creaturesSchema =  new mongoose.Schema({
     name: {
@@ -8,7 +8,7 @@ const creaturesSchema =  new mongoose.Schema({
     },
 
     creatureType: {
-        type: String,  //dragon, unicorn, alien
+        type: String, 
         required: true
     },
 

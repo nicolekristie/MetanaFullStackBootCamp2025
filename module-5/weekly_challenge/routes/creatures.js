@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
-// import { CreaturesModel }  from '../models/creatures'
+import Creatures from '../models/creatures.js';
+import getRandomCreature  from '../server.js';
 
-import Creatures from '../models/creatures.js'
+const app = express();
 
-// router.get()
 //Create routes
 //Getting all
 router.get('/', async (req, res) => {
@@ -16,14 +16,15 @@ router.get('/', async (req, res) => {
     }
 })
 
-
 //Getting one
-router.get('/:id', (req,res) => {
-    // res.json(res.creature);
-    res.send(res.creature.name);
-    res.send(req.params.id)
-
-})
+router.get('/:id', async (req,res) => {
+    try {
+            const creature = await Creatures.findById(req.params.id)
+            res.json(creature);
+        } catch (err) {
+            res.json({ message: "Creature not found" });
+        }   
+});
 
 //create one
 router.post('/', async (req,res) => {
@@ -44,17 +45,13 @@ router.post('/', async (req,res) => {
 
 //update one
 router.patch('/:id', async (req, res) => {
-if (req.body.name != null) {
-    res.creature.name = req.body.name
-}
-if (req.body.creatureType != null) {
-    res.creature.creatureType = req.body.creatureType
-}
     try {
-        const updatedCreature = await res.creature.save()
+        const creatureId = req.params.id;
+        const updatedCreature  = await Creatures.findOneAndUpdate({_id: creatureId}, req.body, {new: true});
+        // const updatedCreature = await Creatures.updateOne({_id: req.params.id}, {$set: { name: req.body.name }});
         res.json(updatedCreature)
     } catch (err) {
-        res.status(400).json({message: err.message})
+        res.status(400).json({message: "Id not found"})
     }
 })
 
@@ -62,28 +59,18 @@ if (req.body.creatureType != null) {
 // deleting one
 router.delete('/:id', async (req, res) => {
     try {
-        await res.creature.remove();
+        const removedPost = await Creatures.deleteOne({_id: req.params.id})
         res.json({message: "Deleted creature"});
     } catch (err) {
         res.status(500).json({message: err.message })
     }
 })
 
-//create middleware 
-// async function getCreature(req, res, next) {
-//     let creature
-//     try{
-//         creature = await Creatures.findById(req.params.id)
-//         if (creature == null) {
-//             return res.status(404).json({message: 'cannot find creature'})
-//         }
-//     } catch (err) {
-//         return res.status(500).json({message: err.message})
-//     }
 
-//     res.creature = creature
-//     next()   //allows you to move on to the next set of middleware
-// }
+//generate random creature from arrary
+router.post('/randomCreature', getRandomCreature, (req, res) => {
+  
+})
 
 
-export default router;
+export default router

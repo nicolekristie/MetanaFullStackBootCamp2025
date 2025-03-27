@@ -13,15 +13,13 @@ import express from 'express';
 const app = express();
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import fantasyCreaturesRouter from './routes/creatures.js';
 
-//creat middleware to run body-parser every time we hit any request
+//create middleware to run body-parser every time we hit any request
 app.use(bodyParser.json());
 
-//mongoose.connect('mongodb://localhost/creatures', { useNewUrlParser: true});
-
 const dbURI='mongodb+srv://nicoleV:t3st1234@cluster0.ynize.mongodb.net/'
-
-mongoose.connect(dbURI, {useNewURLParser: true, dbName: 'beast_collection'})
+mongoose.connect(dbURI, {useNewURLParser: true, dbName: 'creatures'})
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open',() => console.log('Connected to Database'))
@@ -30,65 +28,47 @@ db.once('open',() => console.log('Connected to Database'))
 app.use(express.json());
 
 //setup our routers
-
-import fantasyCreaturesRouter from './routes/creatures.js';
 app.use('/creatures', fantasyCreaturesRouter);
 
+const creatureArray = [
+    { 
+    name: "Goby",
+    creatureType: "Goblin",
+    creatureSkill: "Gobble",
+    weakness: "fire-based-attacks"
+    },
+    { 
+      name: "Wolfy",
+      creatureType: "Werewolf",
+      creatureSkill: "speed",
+      weakness: "silver"
+    },
+    { 
+      name: "Cetus",
+      creatureType: "Sea Monster",
+      creatureSkill: "swimming",
+      weakness: "weapons"
+    }
 
-// const router = express.Router();  //// get an instance of the express Router
+  ]
 
-// import { router as fantasyCreaturesRouter} from '../routes/creatures'
+  function getRandomItem(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
 
 
+export default function getRandomCreature(req, res, next){
+    const randomElement = getRandomItem(creatureArray);
+
+    req.body.name = randomElement.name;
+    req.body.creatureType = randomElement.creatureType;
+    req.body.creatureSkill = randomElement.creatureSkill
+    req.body.weakness = randomElement.weakness
+    res.send(`${req.body.name}\n${req.body.creatureType}\n${req.body.creatureSkill}\n${req.body.weakness}`);
+}
 
 
-
-// const fantasyCreaturesRouter = require('./routes/subscribers')
-
+app.use(getRandomCreature);
 
 app.listen(3000, () => console.log('Server Started'));
-
-
-
-
-
-
-
-
-
-
-
-
-// import creatures from './models/creatures';
-
-//import { router as fantasyCreaturesRouter} from '../routes/creatures'
-// import "./models/creatures";
-
-
-console.log(process.env.DATABASE_URL);
-// connect to mongodb
-
-
-app.set('view engine', 'ejs');
-
-
-
-// import {fantasyCreaturesRouter} from '../routes/creatures';
-// import {router} from './routes/creatures';
-
-
-// import './routes/creatures.js';
-
-
-// app.get('/', (req, res) => {
-//     res.send("Hello World");
-// });
-
-
-
-// app.use('/creatures', fantasyCreaturesRouter)
-
-
-
-
-//configure mongoose to connect to db

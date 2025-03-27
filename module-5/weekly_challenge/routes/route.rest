@@ -2,7 +2,7 @@ GET http://localhost:3000/creatures
 
 ###
 
-GET http://localhost:3000/creatures/67e40d44cb002dba6b39e988
+GET http://localhost:3000/creatures/67e5910e35ff674dd5ba26a3
 
 ###
 POST http://localhost:3000/creatures
@@ -16,14 +16,14 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+DELETE http://localhost:3000/creatures/67e5910e35ff674dd5ba26a3
 
 ###
-PATCH http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+PATCH http://localhost:3000/creatures/67e59f9387e3db4c83b90824
 Content-Type: application/json
 
 {
-    "name": "New Name"
+    "name": "Drago Updated again"
 }
 
 ###
@@ -35,4 +35,26 @@ Content-Type: application/json
     "creatureType": "Sea-Monster",
     "creatureSkill": "sharp-biting",
     "weakness": "electricity"
+}
+
+###
+POST http://localhost:3000/randomCreature
+Content-Type: application/json
+
+{
+   
+
+
+
+}
+
+###
+POST http://localhost:3000/creatures
+Content-Type: application/json
+
+{
+    "name": "Booby",
+    "creatureType": "Ghost",
+    "creatureSkill": "turn invisible",
+    "weakness": "cross"
 }
