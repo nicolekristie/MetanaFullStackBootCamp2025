@@ -3,6 +3,9 @@ const router = express.Router();
 
 
 import Blogs from '../models/blogs.js'
+const app = express();
+
+const blogMiddleware = getBlog(Blogs);
 
 // router.get()
 //Create routes
@@ -16,17 +19,27 @@ router.get('/', async (req, res) => {
     }
 })
 
+
 //Getting one
-router.get('/:id', getBlog, (req,res) => {
-    res.json(res.blogs);
-})
+router.get('/:id', async (req,res) => {
+    try {
+            const blog = await Blogs.findById(req.params.id)
+            res.json(blog);
+        } catch (err) {
+            res.json({ message: "Blog not found" });
+        }   
+});
+
+
+
+
 
 //create one
-router.post('/', getBlog, async (req,res) => {
-    const blog = new Blogs({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,   //masked
+router.post('/', async (req,res) => {
+    const blog= new Blogs({
+        title: req.body.title,
+        content: req.body.content,
+        author: req.body.author,
     })
     try {
         const newBlog = await blog.save()
@@ -37,34 +50,30 @@ router.post('/', getBlog, async (req,res) => {
 
 })
 
+
 //update one
-router.patch('/:id', getBlog, async (req, res) => {
-if (req.body.name != null) {
-    res.blog.name = req.body.name
-}
-if (req.body.email != null) {
-    res.blog.email = req.body.email
-}
+router.patch('/:id', async (req, res) => {
     try {
-        const updatedBlog = await res.blog.save()
+        const blogId = req.params.id;
+        const updatedBlog  = await Blogs.findOneAndUpdate({_id: blogId}, req.body, {new: true});
         res.json(updatedBlog)
     } catch (err) {
-        res.status(400).json({message: err.message})
+        res.status(400).json({message: "Id not found"})
     }
 })
 
 
 // deleting one
-router.delete('/:id', getBlog, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        await res.blog.remove();
+        const removedblog = await Blogs.deleteOne({_id: req.params.id})
         res.json({message: "Deleted Blog"});
     } catch (err) {
         res.status(500).json({message: err.message })
     }
 })
 
-//create middleware so we don't reuse id
+//create middleware to get blog by id
 async function getBlog(req, res, next) {
     let blog
     try{
@@ -72,11 +81,12 @@ async function getBlog(req, res, next) {
         if (blog == null) {
             return res.status(404).json({message: 'cannot find blog'})
         }
-    } catch (err) {
-        return res.status(500).json({message: err.message})
-    }
 
-    res.blog = blog
+        req.blog = blog;
+    } catch (error) {
+        // return res.status(500).json({message: err.message})
+        return error.message
+    }
     next()   //allows you to move on to the next set of middleware
 }
 

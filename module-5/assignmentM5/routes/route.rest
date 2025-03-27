@@ -1,27 +1,56 @@
-GET http://localhost:3000/creatures
+GET http://localhost:3000/blogs
 
 ###
 
-GET http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+GET http://localhost:3000/blogs/67e5b5def1c9eb3852d02b99
 
 ###
-POST http://localhost:3000/creatures
+POST http://localhost:3000/blogs
 Content-Type: application/json
 
 {
-    "name": "Drago",
-    "creatureType": "Dragon",
-    "creatureSkill": "fire-breathing",
-    "weakness": "underbelly"
+    "title": "Blog 4",
+    "content": "about my new blog4",
+    "author": "Test Author Blogger4"
 }
 
 ###
-DELETE http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+DELETE http://localhost:3000/blogs/67e5b68085831bc40398cb7c
 
 ###
-PATCH http://localhost:3000/creatures/67dc1a6c59e81c2d99af8791
+PATCH http://localhost:3000/blogs/67e5b5def1c9eb3852d02b99
 Content-Type: application/json
 
 {
-    "name": "New Name"
+    "title": "Blog Updated"
+}
+
+###
+
+
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/67e5b5def1c9eb3852d02b99
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Tester One",
+    "email": "testone@gmail.com",
+    "password": "test1234"
+}
+
+###
+DELETE http://localhost:3000/users
+
+###
+PATCH http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "emailupdated@test.com"
 }
