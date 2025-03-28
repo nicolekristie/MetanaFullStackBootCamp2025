@@ -48,7 +48,6 @@ router.patch('/:id', async (req, res) => {
     try {
         const creatureId = req.params.id;
         const updatedCreature  = await Creatures.findOneAndUpdate({_id: creatureId}, req.body, {new: true});
-        // const updatedCreature = await Creatures.updateOne({_id: req.params.id}, {$set: { name: req.body.name }});
         res.json(updatedCreature)
     } catch (err) {
         res.status(400).json({message: "Id not found"})
@@ -67,7 +66,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 
-//generate random creature from arrary
+//use middleware to generate random creature from arrary
 router.post('/randomCreature', getRandomCreature, (req, res) => {
   
 })
