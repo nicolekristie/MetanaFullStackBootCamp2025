@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/blogs/67e5b68085831bc40398cb7c
+DELETE http://localhost:3000/blogs/67e6aa395a84b5e468bccaa4
 
 ###
 PATCH http://localhost:3000/blogs/67e5b5def1c9eb3852d02b99
@@ -27,28 +27,27 @@ Content-Type: application/json
 
 ###
 
-
 GET http://localhost:3000/users
 
 ###
 
-GET http://localhost:3000/users/67e5b5def1c9eb3852d02b99
+GET http://localhost:3000/users/67e6bf163d6b656a9262e1d0
 
 ###
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Tester One",
-    "email": "testone@gmail.com",
+    "username": "TesterThree",
+    "email": "testthree@gmail.com",
     "password": "test1234"
 }
 
 ###
-DELETE http://localhost:3000/users
+DELETE http://localhost:3000/users/67e6bf163d6b656a9262e1d0
 
 ###
-PATCH http://localhost:3000/users
+PATCH http://localhost:3000/users/67e6bf203d6b656a9262e1d2
 Content-Type: application/json
 
 {

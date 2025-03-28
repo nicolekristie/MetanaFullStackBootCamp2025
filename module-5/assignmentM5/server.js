@@ -4,30 +4,29 @@
 // CRUD operations, and connect the backend to the frontend in later modules.
 
 
-import 'dotenv/config';
 import express from 'express';
 const app = express();
 import mongoose from 'mongoose';
+import blogRouter from './routes/blogs.js';
+import userRouter from './routes/users.js';
+import { DATABASE_URL } from './config.js';
+// import bcrypt from 'bcrypt';
 
+// const hash = bcrypt.hash(password, 10);
 
+mongoose.connect(DATABASE_URL, { useNewUrlParser: true, dbName: 'Blogs'});
 
-// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true});
+console.log(`db: ${DATABASE_URL}`)
 
-const dbURI='mongodb+srv://nicoleV:t3st1234@cluster0.ynize.mongodb.net/'
-
-mongoose.connect(dbURI, {useNewURLParser: true, dbName: 'Blogs'})
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open',() => console.log('Connected to Database'))
 
 //setup server to accept json as a body
 app.use(express.json());
-
 app.set('view engine', 'ejs');
 
-
 //setup our routers
-import blogRouter from './routes/blogs.js';
 app.use('/blogs', blogRouter);
-
+app.use('/users', userRouter);
 app.listen(3000, () => console.log('Server Started'));

@@ -1,13 +1,9 @@
 import express from 'express';
-const router = express.Router();
-
-
 import Blogs from '../models/blogs.js'
+const router = express.Router();
 const app = express();
-
 const blogMiddleware = getBlog(Blogs);
 
-// router.get()
 //Create routes
 //Getting all
 router.get('/', async (req, res) => {
@@ -19,7 +15,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-
 //Getting one
 router.get('/:id', async (req,res) => {
     try {
@@ -29,10 +24,6 @@ router.get('/:id', async (req,res) => {
             res.json({ message: "Blog not found" });
         }   
 });
-
-
-
-
 
 //create one
 router.post('/', async (req,res) => {
@@ -50,7 +41,6 @@ router.post('/', async (req,res) => {
 
 })
 
-
 //update one
 router.patch('/:id', async (req, res) => {
     try {
@@ -61,7 +51,6 @@ router.patch('/:id', async (req, res) => {
         res.status(400).json({message: "Id not found"})
     }
 })
-
 
 // deleting one
 router.delete('/:id', async (req, res) => {

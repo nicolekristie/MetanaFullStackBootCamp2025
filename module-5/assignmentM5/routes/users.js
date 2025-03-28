@@ -1,7 +1,6 @@
 import express from 'express';
-const router = express.Router();
-
 import Users from '../models/users.js'
+const router = express.Router();
 const app = express();
 
 
@@ -16,7 +15,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-
 //Getting one
 router.get('/:id', async (req,res) => {
     try {
@@ -28,11 +26,10 @@ router.get('/:id', async (req,res) => {
 });
 
 
-
 //create one
 router.post('/', async (req,res) => {
     const user= new Users({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
     })
@@ -45,18 +42,16 @@ router.post('/', async (req,res) => {
 
 })
 
-
 //update one
 router.patch('/:id', async (req, res) => {
     try {
         const userId = req.params.id;
-        const updatedUser  = await Blogs.findOneAndUpdate({_id: userId}, req.body, {new: true});
+        const updatedUser  = await Users.findOneAndUpdate({_id: userId}, req.body, {new: true});
         res.json(updatedUser)
     } catch (err) {
         res.status(400).json({message: "Id not found"})
     }
 })
-
 
 // deleting one
 router.delete('/:id', async (req, res) => {
