@@ -7,7 +7,8 @@ const taskDuration = document.getElementById("duration");
 const taskTime = document.getElementById("time-display");
 const createTaskBtn = document.getElementById("create-task")
 const taskListContainer = document.querySelector(".task-list-container");
-const showCompleteBtn = document.getElementById("btn-3");
+//const showCompleteBtn = document.getElementById("btn-3");
+const showCompleteBtn = document.getElementById("button#btn-3");
 const completeListSection = document.getElementById("complete-task-list-container");
 
 //edit task
@@ -25,6 +26,8 @@ const inputField = document.querySelector(".input-field")
 const moodForm = document.querySelector(".mood-form-container");
 const moodImage = document.getElementById("mood-image");
 const moodCloseBtn = document.getElementById("mood-form-close-btn");
+const moodImageDisplay = document.getElementById("mood-image-display");
+
 //Login Form
 const loginForm = document.querySelector(".form-container");
 const loginBtn = document.getElementById("login-btn");
@@ -85,17 +88,16 @@ function getWeatherData() {
         
 
             if (condition=='Sunny' || condition =='Clear'){
-                weatherImage.innerHTML = "☀️"
-                // weatherImage.innerHTML && weatherIcon.innerHTML === "☀️"
+                weatherImage.innerHTML == "☀️"
             }
             else if (condition=='rain'){
-                weatherImage.innerHTML && weatherIcon.innerHTML == "⛆"
+                weatherImage.innerHTML == "⛆"
             }
-            else if (condition =="partly cloudy"){
-                weatherImage.innerHTML && weatherIcon.innerHTML =="☁️"
+            else if (condition =="partly cloudy" || condition=="Overcast"){
+                weatherImage.innerHTML =="☁️"
             }
             else {
-                weatherImage.innerHTML && weatherIcon.innerHTML == "☀️"
+                weatherImage.innerHTML == "☀️"
             }
 
             celcius.innerHTML = temperature;
@@ -109,7 +111,7 @@ function getWeatherData() {
 
 weatherIcon.addEventListener("click", () => {
     if (weatherForm.style.display === "none") {
-        weatherForm.style.display = "block";
+        weatherForm.style.display = "block";    
         getWeatherData();
     } else {
         weatherForm.style.display = "none";
@@ -294,6 +296,13 @@ function displayTaskForm() {
 // function displayCompleteSection() {
 //     completeListSection.style.display="block"
 // }
+
+
+// showCompleteBtn.addEventListener("click", () =>{
+//      alert("testing in complete");
+//     completeListSection.style.display="block";
+// });
+
 
 
 closeButton.addEventListener("click", () => {

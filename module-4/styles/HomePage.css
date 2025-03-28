@@ -307,7 +307,7 @@ height: 60%;
 
 #humidity{
   height: 20px;
-  color: black
+  color: lightgray
 }
 
 
@@ -647,6 +647,7 @@ height: 60%;
 
 
     .complete-task-list-container{
+      /* display:none; */
       border: 3px solid blue;
       height: 300px;  
       margin: 10px;
