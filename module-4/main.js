@@ -80,8 +80,8 @@ function getWeatherData() {
             console.log(data);
             const temperature = data.current.temp_f;
             const condition = data.current.condition.text;
-            const humidity = data.current.humidity;
-            console.log(`Temperature: ${temperature}°F, condition: ${condition} and the humidity is: ${humidity}`);
+            const humidityValue = data.current.humidity;
+            console.log(`Temperature: ${temperature}°F, condition: ${condition} and the humidity is: ${humidityValue}`);
         
 
             if (condition=='Sunny' || condition =='Clear'){
@@ -91,7 +91,7 @@ function getWeatherData() {
             else if (condition=='rain'){
                 weatherImage.innerHTML && weatherIcon.innerHTML == "⛆"
             }
-            else if (condition =="cloudy"){
+            else if (condition =="partly cloudy"){
                 weatherImage.innerHTML && weatherIcon.innerHTML =="☁️"
             }
             else {
@@ -100,7 +100,7 @@ function getWeatherData() {
 
             celcius.innerHTML = temperature;
             weatherCondition.innerHTML = condition;
-            humidity.innerHTML =`Humidity: ${humidity}`;
+            humidity.innerHTML =`Humidity: ${humidityValue}`;
     })
         .catch(error => {
             console.error('There was a problem fetching the weather data:', error);
@@ -315,10 +315,15 @@ function checkTaskLocalStorage() {
 }
 
 
-const storedTasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+var storedTasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+var completeStoredTasks = JSON.parse(localStorage.getItem("completeTasks")) || []; 
+
 
 
 function displayTasks() {
+    storedTasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+    completeStoredTasks = JSON.parse(localStorage.getItem("completeTasks")) || []; 
+    console.log(completeStoredTasks)
     const taskList = document.getElementById("taskData");
     taskList.innerHTML = ""; // Clear the list before adding new tasks
 
@@ -333,6 +338,23 @@ function displayTasks() {
         `;
         taskList.appendChild(taskItem);
     });  
+
+    const completeTaskList = document.getElementById("completeTaskData");
+    completeTaskList.innerHTML = ""; // Clear the list before adding new tasks
+
+
+    completeStoredTasks.forEach((task, index) => {
+        const completeTaskItem = document.createElement("div");
+        completeTaskItem.classList.add("c-list");
+        completeTaskItem.innerHTML = `
+            <li>${task.taskName} - ${task.taskDuration} - ${task.taskTime}</li>
+        `;
+        completeTaskList.appendChild(completeTaskItem);
+  
+    });  
+
+
+
 
 }
 
@@ -350,14 +372,14 @@ function addTaskToStorage() {
 }
 
 
-function addcompleteTaskToStorage(index){
-    const newCompleteTask = {
-        taskName: taskName.value,
-        taskDuration: taskDuration.value,
-        taskTime: taskTime.value
-    };
+function addcompleteTaskToStorage(task){
+    // const newCompleteTask = {
+    //     taskName: taskName.value,
+    //     taskDuration: taskDuration.value,
+    //     taskTime: taskTime.value
+    // };
 
-    completeStoredTasks.push(newCompleteTask); 
+    completeStoredTasks.push(task); 
     localStorage.setItem("completeTasks", JSON.stringify(completeStoredTasks)); 
 }
 
@@ -404,22 +426,15 @@ function deleteTask(index) {
 }
 
 
-const completeStoredTasks = JSON.parse(localStorage.getItem("completeTasks")) || []; 
-
+completeStoredTasks = JSON.parse(localStorage.getItem("completeTasks")) || []; 
 
 function completeTasks(index){
     //remove items from task section and place in complete section and strike through task
     itemToAdd=storedTasks[index];
-    deleteTask(index);
-    const completeTaskList = document.getElementById("completeTaskData");
-    const completeTaskItem = document.createElement("div");
-    completeTaskItem.classList.add("c-list");
-    completeTaskItem.innerHTML = `
-        <li>${itemToAdd.taskName} - ${itemToAdd.taskDuration} - ${itemToAdd.taskTime}</li>
-    `;
-    completeTaskList.appendChild(completeTaskItem);
-    addcompleteTaskToStorage(index);
+    console.log(itemToAdd);
 
+    addcompleteTaskToStorage(itemToAdd);
+    deleteTask(index);
 }
 
 
