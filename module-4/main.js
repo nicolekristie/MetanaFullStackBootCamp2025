@@ -133,11 +133,6 @@ const isValidEmail = (email) => {
         );
 };
 
-// loginForm.addEventListener('input', (e) => {
-//     e.preventDefault();
-//     validateInputs();
-// });
-
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
@@ -362,9 +357,6 @@ function displayTasks() {
   
     });  
 
-
-
-
 }
 
 
@@ -382,12 +374,6 @@ function addTaskToStorage() {
 
 
 function addcompleteTaskToStorage(task){
-    // const newCompleteTask = {
-    //     taskName: taskName.value,
-    //     taskDuration: taskDuration.value,
-    //     taskTime: taskTime.value
-    // };
-
     completeStoredTasks.push(task); 
     localStorage.setItem("completeTasks", JSON.stringify(completeStoredTasks)); 
 }
