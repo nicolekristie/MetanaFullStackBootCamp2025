@@ -10,6 +10,7 @@ const taskListContainer = document.querySelector(".task-list-container");
 //const showCompleteBtn = document.getElementById("btn-3");
 const showCompleteBtn = document.getElementById("button#btn-3");
 const completeListSection = document.getElementById("complete-task-list-container");
+const completeAllBtn = document.getElementById("btn2");
 
 //edit task
 const editTaskForm = document.querySelector(".edit-task")
@@ -90,10 +91,11 @@ function getWeatherData() {
             if (condition=='Sunny' || condition =='Clear'){
                 weatherImage.innerHTML == "☀️"
             }
-            else if (condition=='rain'){
-                weatherImage.innerHTML == "⛆"
+            if (condition =='rain' || condition == 'Light rain'){
+                console.log("light rain......")
+                weatherImage.innerHTML = "⛈️"       
             }
-            else if (condition =="partly cloudy" || condition=="Overcast"){
+            if (condition =="Overcast" || condition=="partly cloudy") {
                 weatherImage.innerHTML =="☁️"
             }
             else {
@@ -262,6 +264,24 @@ sliderValue.oninput = function () {
 }
 
 
+
+completeAllBtn.addEventListener('click', completeAllTasks());
+
+function completeAllTasks() {
+
+     // Get all buttons with the name “Complete” and store in a NodeList called 'buttons'
+        const button = document.getElementsByName('Complete');
+        console.log(`button: ${button}[0]`)
+      
+          // Loop through NodeList and call the click() function on each button
+          for(var i = 0; i <= button.length(); i++)  
+            alert(`button length: ${button.length()}`)
+            $(".btn-3").click();
+             console.log(`button ${button}[i]`)
+
+     }
+   
+
 //Validation
 const validateInputs = () => {
     if (email.value === "" || email.value === null) {
@@ -294,7 +314,6 @@ function displayTaskForm() {
 
 
 // showCompleteBtn.addEventListener("click", () =>{
-//      alert("testing in complete");
 //     completeListSection.style.display="block";
 // });
 
