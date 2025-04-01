@@ -1,0 +1,65 @@
+
+
+-- Practical Hands-on Experience with PostgreSQL
+
+-- Write the SQL commands for creating the database and user, and check them into your Git project.
+
+-- Connect to a database:
+-- \connect DBNAME
+
+
+CREATE DATABASE company_records ;
+
+CREATE USER db_user WITH ENCRYPTED PASSWORD  ‘t3st1234’;
+
+GRANT ALL PRIVILEGES ON DATABASE company_records TO db_user;
+
+CREATE SCHEMA employeeSchema;
+
+-- company_records=# create table employeeSchema.employee(
+-- company_records(# emp_id integer NOT NULL,
+-- company_records(# emp_name VARCHAR (20) NOT NULL,
+-- company_records(# emp_title VARCHAR,
+-- company_records(# emp_dept_no INT,
+-- company_records(# PRIMARY KEY (emp_id)
+
+CREATE SCHEMA salarySchema;
+
+-- company_records=# create table salarySchema.salary(
+-- company_records(# emp_id INT NOT NULL,
+-- company_records(# salary DECIMAL (10,2),
+-- company_records(# PRIMARY KEY (emp_id)
+-- company_records(# );
+
+CREATE SCHEMA deptSchema;
+
+-- company_records=# create table deptSchema.department(
+-- company_records(# dept_no INT NOT NULL,
+-- company_records(# dept_name VARCHAR,
+-- company_records(# PRIMARY KEY (dept_no)
+-- company_records(# );
+
+-- Basic SQL Queries
+
+select * from employee;
+select * from salary;
+select * from department;
+
+select * from employee where emp_dept_no = 125;
+select emp_name from employee join salary ON employee.emp_id = salary.emp_id where salary > 125000;
+
+select * from employee join salary ON employee.emp_id = salary.emp_id;
+
+delete from employee where emp_id = 3;
+
+-- Intermediate SQL Queries
+
+select * from employee join department ON employee.emp_dept_no = department.dept_no;
+
+select * from employee join department ON employee.emp_dept_no = department.dept_no join salary on salary.emp_id = employee.emp.id
+
+select SUM(salary) from employee join salary on employee.emp_id = salary.emp_id 
+
+select SUM(salary) from employee join salary on employee.emp_id = salary.emp_id GROUP BY emp_dept_no;
+
+select AVG(salary) from employee join salary on employee.emp_id = salary.emp_id 
