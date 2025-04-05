@@ -1,0 +1,61 @@
+GET http://localhost:3000/blogs
+
+###
+
+
+GET http://localhost:3000/blogs/555
+
+###
+POST http://localhost:3000/blogs
+Content-Type: application/json
+
+{
+    "blog_id": 660,
+    "title": "Blog 660",
+    "blog_content": "about my new blog650",
+    "author": "Test Author Blogger650",
+    "created": "2025-04-03"
+}
+
+###
+DELETE http://localhost:3000/blogs/660
+
+###
+PATCH  http://localhost:3000/blogs/850
+Content-Type: application/json
+
+{
+    "blog_content": "Blog 850 Updated"
+}
+
+###
+GET http://localhost:3000/users
+
+###
+
+
+GET http://localhost:3000/users/4
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "user_id": 5,
+    "username": "testuser5",
+    "email": "testuser5@test.com",
+    "user_password": "Test5",
+    "created": "2025-04-05",
+    "blog_id": 901
+}
+
+###
+DELETE http://localhost:3000/users/5
+
+###
+PATCH  http://localhost:3000/users/5
+Content-Type: application/json
+
+{
+    "email": "email updated"
+}
