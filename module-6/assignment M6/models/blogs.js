@@ -11,6 +11,8 @@ const client = new Client({
     port: 5432,
   });
 
+  //need a function const createBlogTable >await client.connect> (createtablequery)ex. blogs/users
+
   const blogSchema = {
     blog_id: {
         type: Number,
@@ -36,6 +38,7 @@ const client = new Client({
   }
 
 
+  
 
 
 // const blogSchema =  {
@@ -46,4 +49,5 @@ const client = new Client({
 // }, {collection: 'Blog_collection'})
 
 //model allows us to interact directly with the database using this schema
-export default mongoose.model('Blogs', blogSchema);
+// export default .model('Blogs', blogSchema);
+

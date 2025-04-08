@@ -3,6 +3,8 @@ import {client} from '../main.js'
 import express from 'express';
 const router = express.Router(); 
 const app = express();
+import argon2 from 'argon2';
+
 
 
 //assign route handler as a function
@@ -18,23 +20,30 @@ export const getAllUsers = (req,res) => {
     })
 }
 
+export const createNewUser = async (req,res)=>{
+    const { user_id, username, email, user_password, created, blog_id} = req.body;
+    try{
+        const hashedpassword = await argon2.hash(user_password);
 
-export const createNewUser  = (req,res) => {
-    const { user_id, username, email, user_password, created, blog_id} = req.body
-    const insert_query='Insert into users (user_id, username, email, user_password, created, blog_id) Values ($1,$2,$3,$4,$5,$6)'
+        const insert_query='Insert into users (user_id, username, email, user_password, created, blog_id) Values ($1,$2,$3,$4,$5,$6)'
 
-    client.query(insert_query,[user_id, username, email, user_password, created, blog_id], (err, result) =>{
-        if(err)
-            {
-                res.send(err.message)
-            }
-        else {
-            console.log(result)
-            res.send("POSTED DATA");
-        }
-    })
+        client.query(insert_query,[user_id, username, email, hashedpassword, created, blog_id], (err, result) =>{
+                    if(err)
+                        {
+                            res.send(err.message);
+                        }
+                    else {
+                        console.log(result)
+                        res.send("POSTED DATA");
+                    }
+                })
+
+    } catch(err) {
+        res.status(500).send("error hashing password");
+    }
 
 }
+
 
 export const updateUser =  (req,res)=> {
     const email=req.params.email;

@@ -37,9 +37,12 @@ export const createNewBlog  = (req,res) => {
 }
 
 export const updateBlog =  (req,res)=> {
-    const blog_content=req.params.blog_content;
+
+    const blog_content=req.body.blog_content;
+    console.log(`entered update ${blog_content}`)
     const blog_id = req.params.id;
     
+
     const update_query = "Update blogs SET blog_content=$1 Where blog_id=$2;"
     console.log(`entered update ${blog_content} ${blog_id}`)
 
