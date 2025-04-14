@@ -63,3 +63,12 @@ select SUM(salary) from employee join salary on employee.emp_id = salary.emp_id
 select SUM(salary) from employee join salary on employee.emp_id = salary.emp_id GROUP BY emp_dept_no;
 
 select AVG(salary) from employee join salary on employee.emp_id = salary.emp_id 
+
+-- Create a SQL migration script to add a new column “Hire_Date” to the Employees table.
+ALTER TABLE employee
+ADD Hire_Date DATE;
+
+Update employee set hire_date = '2022-04-06' where emp_id=1
+Update employee set hire_date = '2020-01-21' where emp_id=2
+Update employee set hire_date = '2015-12-01' where emp_id=5
+Update employee set hire_date = '2019-07-02' where emp_id=4

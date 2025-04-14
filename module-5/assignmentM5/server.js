@@ -16,7 +16,6 @@ import { DATABASE_URL } from './config.js';
 
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true, dbName: 'Blogs'});
 
-console.log(`db: ${DATABASE_URL}`)
 
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
