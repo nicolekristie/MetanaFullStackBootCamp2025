@@ -1,0 +1,36 @@
+{
+    "blogs": [
+        {
+        "title": "Natasha's Kitchen",
+        "content": "Welcome to Natasha’s Kitchen!we’ve been passionately developing and sharing tried-and-true recipes since 2009",
+        "author": "Natasha Tester"          
+        },
+
+       {
+        "title": "The Spice Train",
+        "content": "I have been adventurous and creative in the kitchen ever since I can remember. But it wasn't until a decade or so ago that I started to learn about and experiment with spices. The more I learned, the more ideas I had. So I started The Spice Train to catalogue the dishes I came up with",
+        "author": "Spice Tester"
+       },
+
+       {
+        "title": "Chocolate Covered Katie",
+        "content": "Chocolate Covered Katie is one of the top 25 food websites in America, and Katie has been featured on The Today Show, CNN, Fox, The Huffington Post, and ABC’s 5 O’clock News.",
+        "author": "Katie Tester"
+       },
+
+
+       {
+        "title": "Jo Cooks",
+        "content": "Hello and welcome! I’m Joanna, the founder of Jo Cooks, a cookbook author, a food blogger with over 14 years of recipe development experience and a passionate home cook with over 30 years of culinary experience.",
+        "author": "Jo Tester"
+       },
+
+       {
+        "title": "Cooktoria",
+        "content": "Cooktoria is a site full of quick, healthy, and wholesome meals.",
+        "author": "Cook Tester"
+       }
+
+    ]
+
+}
