@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/input.css" rel="stylesheet" />
+    <link href= "./src/App.css"/> 
+    <script type="module" src="./src/App.jsx"></script>
+    <title>Food Blog</title>
+  </head>
+  <body>
+    <img src="./src/images/food.jpeg" alt="Food" />
+    <img
+      src="./src/images/search.png"
+      alt="search"
+      width="60"
+      height="35"
+      align="right"
+    />
+    <div className="bg-blue-500 text-white p-4 rounded">
+      This is a Tailwind-styled element.
+    </div>
+    <h1 className="text-1xl font-bold underline">Hello world!</h1>
+
+    <h1 align="center">FOODIES BLOG</h1>
+    <div class="btn-container" align="center">
+      <button type="button">HOME</button>
+      <button type="button">BLOG LIST</button>
+      <button type="button">BLOG DETAIL</button>
+      <button type="button">ADMIN DASHBOARD</button>
+    </div>
+    <div>
+      <br /><br /><br />
+      <h2>*******************TRENDING CATAGORIES**********************</h2>
+    </div>
+    <div class="food-container">
+      <img src="./src/images/pasta.jpg" alt="Pasta" width="260" height="200" />
+      <img
+        src="./src/images/chicken.jpg"
+        alt="Chicken"
+        width="260"
+        height="200"
+      />
+      <img
+        src="./src/images/sideDishes.jpg"
+        alt="Side Dishes"
+        width="260"
+        height="200"
+      />
+      <br /><br />
+    </div>
+
+    <div><span>SUBSCRIBE TO GET FREE RECIPES SENT TO YOUR INBOX!</span></div>
+    <br /><br />
+  </body>
+  <form>
+    <label for="fullName">Name</label><br />
+    <input type="text" id="fname" name="fname" /><br /><br />
+    <label for="emailAddress">Email</label><br />
+    <input type="text" id="email" name="email" /><br /><br />
+    <input type="submit" value="Click to Subscribe" />
+  </form>
+</html>
