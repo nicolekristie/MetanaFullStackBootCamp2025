@@ -1,0 +1,23 @@
+
+
+body {
+
+  background-color: grey;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.btn-class {
+  background-color: pink;
+  border-radius: 20px;
+  width: 80px;
+  padding: 5px;
+  margin: 5px;
+
+
+}
+
