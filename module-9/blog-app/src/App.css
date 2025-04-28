@@ -1,0 +1,61 @@
+#root {
+  direction: flex;
+  width: 800px;
+  height: 1000px;
+  margin: 0 auto;
+  padding: 4rem;
+  text-align: center;
+  border: 5px solid red;
+  background-color: lightgreen;
+}
+
+.blog-items{
+  display: flex;
+  flex-direction: column;
+  color: green;
+  font-family: Arial, sans-serif;
+}
+
+.blog-display{
+  border: 4px solid green;
+}
+
+.blog-pg-title{
+  color: green;
+}
+
+.blog-text{
+  color: green
+}
+
+.item{
+  border: 4px solid red;
+}
+
+.header-title{
+  color: green;
+  font-family: Arial, sans-serif;
+}
+
+.admin-pg{
+  color: green;
+}
+
+.blog-detail-heading{
+  color: green;
+}
+
+.b-list{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 10px;
+  color: red;
+}
+
+
+.list-group-item> a{
+  color: black;
+  font-family: Arial, sans-serif;
+}
+

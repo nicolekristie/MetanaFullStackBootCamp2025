@@ -1,0 +1,61 @@
+GET http://localhost:3000/blogs
+
+###
+
+
+GET http://localhost:3000/blogs/555
+
+###
+POST http://localhost:3000/blogs
+Content-Type: application/json
+
+{
+    "blog_id": 500,
+    "title": "Cooktoria",
+    "blog_content": "Cooktoria is a site full of quick, healthy, and wholesome meals. I create quick, healthy, and wholesome meals.",
+    "author": "Cook Tester",
+    "created": "2025-04-28"
+}
+
+###
+DELETE http://localhost:3000/blogs/6
+
+###
+PATCH  http://localhost:3000/blogs/600
+Content-Type: application/json
+
+{
+    "blog_content": "Blog 600 Updated"
+}
+
+###
+GET http://localhost:3000/users
+
+###
+
+
+GET http://localhost:3000/users/1
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "user_id": 3,
+    "username": "testuser3",
+    "email": "testuser3@test.com",
+    "user_password": "Test3",
+    "created": "2025-04-08",
+    "blog_id": 810
+}
+
+###
+DELETE http://localhost:3000/users/5
+
+###
+PATCH  http://localhost:3000/users/5
+Content-Type: application/json
+
+{
+    "email": "email updated"
+}
