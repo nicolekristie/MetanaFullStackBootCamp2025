@@ -29,6 +29,7 @@ function NavBar() {
             <NavbarLink className="blog-list"to="/bloglist"> BlogList</NavbarLink>
             <NavbarLink to="/blogdetail"> BlogDetail</NavbarLink>
             <NavbarLink to="/admindashboard"> AdminDashboard</NavbarLink>
+            <NavbarLink to="/login"> Login</NavbarLink>
             <OpenLinksButton onClick={()=> {
                             setExtendnavBar((curr)=> !curr);
                         }}> {extendnavbar ? <> &#10005;</> : <> &#10005;</>} </OpenLinksButton>
@@ -47,6 +48,7 @@ function NavBar() {
             {" "}
             AdminDashboard
           </NavbarLinkExtended>
+          <NavbarLinkExtended to="/login"> Login</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>

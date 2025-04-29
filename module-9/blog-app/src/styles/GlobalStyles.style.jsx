@@ -54,5 +54,14 @@ export const GlobalStyles = createGlobalStyle`
         color: black;
     }
   
+    .login-container{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border: 3px solid red;
+    }
+
 
     `;

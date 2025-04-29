@@ -5,7 +5,11 @@ const app = express();
 import { DATABASE_PASSWORD, USER } from "../config.js";
 import router from "../server/routes/blogs/blogs.js";
 import { router as userRouter } from "../server/routes/users/users.js";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
+
+// import dotenv from '../config.js'
+
+
 import * as _ from "lodash";
 
 import process from "process";

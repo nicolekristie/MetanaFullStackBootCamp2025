@@ -8,26 +8,27 @@ import BlogListPage from "./pages/BlogListPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Navbar from "./components/NavBar.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
-
-
+import Login from "./components/Login.jsx";
 
 const App = () => {
   return (
     <div>
-        <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
         <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/bloglist" element={<BlogListPage />} />
-        <Route path="/blogdetail" element={<BlogDetail />} />
-        <Route path="/admindashboard" element={<AdminDashBoard />} />
-        <Route path="*" element={<ErrorPage />} />
-        <Route path="/blogs/:id" element={<BlogPage />} />
+          <Route index element={<HomePage />} />
+          {/* <Route path="/create-account" element={<RegistrationPage />} /> */}
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/bloglist" element={<BlogListPage />} />
+          <Route path="/blogdetail" element={<BlogDetail />} />
+          <Route path="/admindashboard" element={<AdminDashBoard />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/blogs/:id" element={<BlogPage />} />
         </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
     </div>
-  )
-}
+  );
+};
 
 export default App;

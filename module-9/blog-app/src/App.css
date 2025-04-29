@@ -59,3 +59,19 @@
   font-family: Arial, sans-serif;
 }
 
+.title, .text-lbl {
+  color: green;
+}
+
+#username, #pass {
+  background-color: lightgrey;
+  
+}
+
+input {
+  color: black
+}
+
+/* .login-form {
+  display: flex;
+} */
