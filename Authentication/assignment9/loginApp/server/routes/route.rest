@@ -1,0 +1,14 @@
+
+GET http://localhost:8015/
+
+###
+POST http://localhost:8015/auth/register
+Content-Type: application/json
+
+{
+    "user_name": "sallyTester",
+    "user_email": "sallytester@test.com",
+    "user_password": "sally1234",
+    "user_role": "admin"
+}
+
