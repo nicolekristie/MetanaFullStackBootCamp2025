@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 
 
 const Register = ({setAuth}) => {
+  
+  const navigate = useNavigate();
+
 
     const [inputs, setInputs] =useState ({
         user_email: "",
@@ -20,7 +23,7 @@ const Register = ({setAuth}) => {
     };
 
     const onSubmitForm = async(e) => { 
-
+ 
         e.preventDefault();  //by default the page refreshes, this prevents the page from being refreshed
         try {
 
@@ -29,18 +32,24 @@ const Register = ({setAuth}) => {
            const response = await fetch("http://localhost:8015/auth/register", {
             method: "POST",
             headers: { "Content-type": "application/json" },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body)   
            });
 
+           
            ///add the same logic from login to use toast
-           const parseRes = await response.json();
-           console.log(`Parse val: ${parseRes.token}`);
-           localStorage.setItem("token", parseRes.token)
+          //  const parseRes = await response.json();
+          //  console.log(`Parse val: ${parseRes.token}`);
+          //  console.log(`Role: ${parseRes.user_role}`);
+
+          //  localStorage.setItem("token", parseRes.token);
+          //  localStorage.setItem("user_role", parseRes.user_role);
            setAuth(true);
+           navigate('/profile');
 
         } catch (err){
             console.error(err.message)
         }
+  
 };
 
 
@@ -55,7 +64,7 @@ const Register = ({setAuth}) => {
             <input style={{width: '400px', height: '30px'}} type="text" name="user_role" placeholder="role" className='form-control my-3' value={user_role} onChange={e=> onChange(e)} />
             <button style={{ backgroundColor: 'green', color: 'white', border: 'none', padding: '10px 20px', cursor: 'pointer' }} className='btn btn-success btn-block'>Submit</button>
              <ToastContainer />
-            <Link to="/login">Login</Link>
+            <Link to="/home">Home</Link>
         </form>
         {/* <Link to="/login">Login</Link> */}
     </div>

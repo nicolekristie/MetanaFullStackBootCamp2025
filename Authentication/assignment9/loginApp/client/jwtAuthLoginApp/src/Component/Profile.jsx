@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { UserConsumer } from '../Context/userContext';
+import { AuthContext } from '../Context/Authcontext.jsx';
+import { UserConsumer } from '../Context/userContext.jsx';
+import Logout from './Logout.jsx';
 
 function Profile() {
+
+  const { user, setUser, logout } = useContext(AuthContext);
+
   return (
     <>
-    <h1>Profile</h1><Link to="/dashboard">Dashboard</Link>
-    <UserConsumer>
-        {
-            username=> {
-                return <div> Hello {username} </div>
-            }
-        }
-
-    </UserConsumer>
+    <h1>Profile Page - Hello {user} </h1>
+    <h2>You have successfully logged in!</h2>
+    <Link to="/dashboard">Dashboard</Link>
+    
+    {/* <button onClick={logout}>Logout</button> */}
+    <Logout/>
     </>
 
   )

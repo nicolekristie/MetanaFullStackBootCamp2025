@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
+import Layout from './Layout';
 
 
 
@@ -36,18 +37,22 @@ import Nav from 'react-bootstrap/Nav';
 function Home() {
   return (
     <>
-      <h1 className='home-text'>Home</h1>
-      <div className='home-container'>      
+       <Layout/>
+      <h1 className='home-text'>Home Page</h1>
+      {/* <div className='home-container'>      
         <nav className="nav-bar-container">
           <div className='home-nav-link'>
             <Link to='/login' onClick={ ()=>handleClick()}>Log in</Link> |
             <Link to='profile'>Profile</Link>
             <Link to='/register'>Register</Link> |
             <Link to='/dashboard'>Dashboard</Link>
+            <Link to='/editor'>Editor</Link>
+
+            <Link to='/adminDashboard'>Dashboard</Link>
           </div>
-        </nav>
+        </nav> */}
  
-      </div>
+      {/* </div> */}
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 
 // 1. Create Context
+
 export const AuthContext = createContext();
 
 // 2. AuthProvider component
@@ -22,3 +23,4 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
