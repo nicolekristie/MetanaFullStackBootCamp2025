@@ -63,7 +63,7 @@ router.post("/register", validateInfo, async (req, res) => {
         console.log("IN LOGIN ENDPOINT>>>>")
        
         //destruct the req.body
-        const {user_email, user_password}  = req.body;
+        const {user_email, user_password, role}  = req.body;
 
         if (!user_email || !user_password) {
             return res.status(400).json({message: 'All fields are Required'})
@@ -76,7 +76,7 @@ router.post("/register", validateInfo, async (req, res) => {
 
             //check if user doesn't exist (if not then we throw error)
             if (user.rows.length === 0) {
-                return res.status(401).json("User not fond");
+                return res.status(401).json("User not found");
             }
 
            // compare password: check if incoming password is the same as the database password
@@ -88,7 +88,8 @@ router.post("/register", validateInfo, async (req, res) => {
     
             // create JWT token      
             const token = jwtGenerator(user.rows[0].user_id);
-            res.json({token});
+            const user_role = user.rows[0].user_role;
+            res.json({token, user_role, user_email});
            // res.status(200).json({message: 'Login Successfull', token});
         } catch (err) {
             console.error(err.message);

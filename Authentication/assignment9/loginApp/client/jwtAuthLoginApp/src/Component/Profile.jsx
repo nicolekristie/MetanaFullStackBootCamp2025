@@ -13,8 +13,8 @@ function Profile() {
     <h1>Profile Page - Hello {user} </h1>
     <h2>You have successfully logged in!</h2>
     <Link to="/dashboard">Dashboard</Link>
-    
-    {/* <button onClick={logout}>Logout</button> */}
+    <br />
+    <Link to="/home">Home</Link>
     <Logout/>
     </>
 

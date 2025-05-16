@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import {useAuth, AuthProvider} from '../Context/AuthContextLatest';
 
 const Layout = () => {
+
+
+
   return (
     <div>
       <nav className="topnav-centered" style={styles.navbar}>
         <Link to="/login" style={styles.link}>Login</Link>
+        {/* {user && <Link to="/profile" >Profile</Link>}
+         {!user && <Link to='/login'>Login</Link>} */}
+     
+
         <Link to="/register" style={styles.link}>Register</Link>
         <Link to="/profile" style={styles.link}>Profile</Link>
         <Link to="/dashboard" style={styles.link}>Dashboard</Link>

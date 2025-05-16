@@ -7,14 +7,17 @@ const Logout = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_role');
+    localStorage.removeItem('user_name');
     // Redirect to layout page after logout
     navigate('/');
   };
 
   return (
-    <button className='log-out-btn' onClick={handleLogout}>
-      Logout
-    </button>
+    <>
+      <button className='log-out-btn' onClick={handleLogout}>
+        Logout
+      </button>
+    </>
   );
 };
 

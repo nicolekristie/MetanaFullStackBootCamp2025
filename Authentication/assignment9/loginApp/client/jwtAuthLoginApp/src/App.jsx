@@ -18,8 +18,12 @@ import Editor from "./Component/Editor.jsx";
 import Layout from "./Component/Layout.jsx";
 import Unauthorized from "./Component/Unauthorized.jsx";
 import RequireAuth from "./Component/RequireAuth.jsx";
+import Logout from "./Component/Logout";
 import { ToastContainer, toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { AuthProvider } from './Context/AuthContextLatest';
+
+
 // import { AuthContext } from "./Context/Authcontext";
 // import { UserProvider } from "./Context/userContext";
 // import { AuthProvider } from "./Context/AuthProvider";
@@ -128,7 +132,7 @@ console.log(`result + ${result}`);
 
   return (
     //wrap our main component with the provider
-      // <AuthProvider> 
+      <AuthProvider> 
   
         <Routes>
           <Route path="/" element={<Layout />}/>
@@ -145,7 +149,16 @@ console.log(`result + ${result}`);
           <Route
               exact
               path="/dashboard"
-              element={<Dashboard setAuth={setAuth} />}/>
+              element={<Dashboard setAuth={setAuth} />}
+            />
+             <Route
+              exact
+              path="/logout"
+              element={<Logout setAuth={setAuth} />}
+            />
+
+
+
 
             {/* <Route
               exact
@@ -162,22 +175,32 @@ console.log(`result + ${result}`);
               element={<Unauthorized/>}/>             
             {/* Protected Routes */}
           
+            <Route
+              exact
+              path="/adminDashboard"
+              element={<AdminDashBoard />}/> 
+
+            <Route
+              exact
+              path="/editor"
+              element={<Editor />}/>
 
 
-          <Route element={<RequireAuth allowedRoles={[Roles.Admin]}/>}>  { /*pass in RequireAuth component to protect these routes */}
-            <Route path="/adminDashboard" element = {<AdminDashBoard />} />
-          </Route>
+
+          {/* <Route element={<RequireAuth allowedRoles={[Roles.Admin]}/>}>  { /*pass in RequireAuth component to protect these routes */}
+            {/* <Route path="/adminDashboard" element = {<AdminDashBoard />} />
+          </Route> */} 
 
         
-           <Route element={<RequireAuth allowedRoles={[Roles.Editor]}/>}> 
+           {/* <Route element={<RequireAuth allowedRoles={[Roles.Editor]}/>}> 
               <Route path="/editor" element = {<Editor />} /> 
-            </Route>
+            </Route> */}
 
               {/* 404 Page  */}
           {/* <Route path="*" element = {<Error />} /> */}
         </Routes>
     
-  // </AuthProvider> 
+   </AuthProvider> 
   
   );
 }

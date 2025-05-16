@@ -1,15 +1,12 @@
 import React,  {useContext, useEffect, useState, Select } from 'react';
 import { Link , useNavigate, useLocation} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-// import { AuthContext } from '../context/AuthProvider.jsx';
-import useAuth from "../hooks/useAuth.js"
-
 import { AuthContext } from '../Context/Authcontext';
+import Editor from './Editor.jsx';
+import  { useAuth } from '../Context/AuthContextLatest.jsx'
 
 
-
-
- const Login = ({setAuth}) => {  //pass in the props
+  const Login = ({setAuth}) => {  //pass in the props
 
   
   const navigate = useNavigate();
@@ -23,10 +20,7 @@ import { AuthContext } from '../Context/Authcontext';
 
   const {user_email, user_password } = inputs
   const [role, setRole] = useState('');
- 
- 
-  //latest......
-  // const { user_email, user_password, setUserEmail, setUserPassword , login } = useContext(AuthContext);
+
 
  const handleRoleChange = (e) => {
    const selectedRole = e.target.value;
@@ -34,25 +28,29 @@ import { AuthContext } from '../Context/Authcontext';
    console.log(`role set to: ${selectedRole}`);
  }
    
-// const storedRole = localStorage.getItem('user_role');
 
-  const handleEmailChange = (e) => {
-    setUserEmail(e.target.value);
-  }
+  // const handleEmailChange = (e) => {
+  //   setUserEmail(e.target.value);
+  // }
 
-  const handlePasswordChange = (e) => {
-    setUserPassword(e.target.value);
-  }
+  // const handlePasswordChange = (e) => {
+  //   setUserPassword(e.target.value);
+  // }
 
 
   const onChange = (e) => {
+    e.preventDefault();
     setInputs({...inputs, [e.target.name]: e.target.value});
   };
 
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    localStorage.setItem("user_role", role);
+  
+    let firstName = user_email.split('@');
+    let name = firstName[0];
+    console.log(`the name: ${name}`)
+
 
     try{
 
@@ -66,32 +64,47 @@ import { AuthContext } from '../Context/Authcontext';
 
       const parseRes = await response.json();
 
+  
+        console.log(`the token is: ${parseRes.token}`)
+        console.log(`the role is: ${parseRes.user_role}`)
+        const user_role = parseRes.user_role;
+        console.log(`the role value is: ${user_role}`)
 
        if (parseRes.token) {
           console.log(`token: ${parseRes.token}`)
           localStorage.setItem("token", parseRes.token);
+          localStorage.setItem("user_role", parseRes.user_role);
+          localStorage.setItem("user_name", name);
           setAuth(true);
-          toast.success("login successfully!");
+          // toast.success("login successfully!");
+          if (user_role === 'admin') {
+            console.log("user is an admin")
+            navigate('/adminDashboard');
+            console.log("after....")
+          } else if (user_role === 'editor') {
+            console.log("user is an editor")
+            navigate('/editor');
+          } else {
+            navigate('/profile');
+          }
+
+
        } else {
         setAuth(false);
         toast.error(parseRes);
        }
-       //after the form is cleared out....
-       navigate(from, { replace: true} );   //Replace the success page for the login >n    navigate to where the use wants to go>
+
+
     } catch (err) {
       console.error(err.message);
     }   
-    navigate("/profile");
+     
+ 
   };
 
- //Add handle submit function
-
-
-{/* <Select defaultValue={{ label: "Initial text", value: "initialText" }} /> */}
 
   return (
    <>
- 
         <h1 className='login-text'>Login</h1>
         <div style={{ display: 'flex', border: '5px solid green', padding: '10px', width:'800px'}} >
           <form className="login-form-container" onSubmit={onSubmitForm} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -109,6 +122,8 @@ import { AuthContext } from '../Context/Authcontext';
               </select>
             </div>
             <b></b>
+
+
             <button style={{ backgroundColor: 'green', color: 'white', border: 'none', padding: '10px 20px', cursor: 'pointer' }}className='btn btn-primary'>Submit</button>
             <ToastContainer />
             <Link className="reg-link" to="/register">Register</Link>
