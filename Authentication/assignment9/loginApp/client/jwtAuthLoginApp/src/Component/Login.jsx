@@ -85,7 +85,7 @@ import  { useAuth } from '../Context/AuthContextLatest.jsx'
             console.log("user is an editor")
             navigate('/editor');
           } else {
-            navigate('/profile');
+            navigate('/dashboard');
           }
 
 

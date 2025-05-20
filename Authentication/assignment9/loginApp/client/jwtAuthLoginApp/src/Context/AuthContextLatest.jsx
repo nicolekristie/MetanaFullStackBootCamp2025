@@ -9,9 +9,9 @@ export function useAuth(){
 
 // 2. AuthProvider component to wrap the rest of our application and provides the authentication context to all of its children
 
-export function AuthProvider(props) {
-    const [authUser, setAuthUser] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+// export function AuthProvider(props) {
+//     const [authUser, setAuthUser] = useState(null);
+//     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
     // useEffect(()=> {
@@ -32,16 +32,50 @@ export function AuthProvider(props) {
     // })
 
 
-    const value = {
-        authUser,
-        setAuthUser,
-        isLoggedIn,
-        setIsLoggedIn
-    }
+    // const value = {
+    //     authUser,
+    //     setAuthUser,
+    //     isLoggedIn,
+    //     setIsLoggedIn
+    // }
+
+   export function AuthProvider({children}) {
+      const [authState, setAuthState] = useState({
+        user: null,
+        token: null,
+        isAuthenticated: false,
+        role: null
+      });
+      const login = (token, userData) => {
+        localStorage.setItem("token", token);
+        setAuthState({
+          user: userData,
+          token,
+          isAuthenticated: true,
+          role: userData.role
+        });
+      };
+      const logout = () => {
+        localStorage.remove("token");
+        setAuthState({
+          user: null,
+          token: null,
+          isAuthenticated: false,
+          role: null
+        });
+      };
+  
+      const value = {
+        ...authState, 
+        login,
+        logout
+      }
+
+ 
 
     return (
         <AuthContext.Provider value={value}>
-          {props.children}
+          {children}
         </AuthContext.Provider>
       );
 };
