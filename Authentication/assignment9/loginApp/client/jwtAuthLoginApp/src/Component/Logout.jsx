@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import LoginContext  from '../Context/LoginContext.jsx';
+
 
 const Logout = () => {
   const navigate = useNavigate();
+
+
+  const {isLoggedIn, setIsLoggedIn} =useContext(LoginContext);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_role');
     localStorage.removeItem('user_name');
-    // Redirect to layout page after logout
-    navigate('/');
+    localStorage.setItem("loggedIn", false);
+    navigate('/login');
   };
 
   return (

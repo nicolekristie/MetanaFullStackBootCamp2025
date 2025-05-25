@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useNavigate} from "react-router-dom"
+
 
 
 
 const Unauthorized = ()  =>{
 
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     const goBack = () => navigate(-1);
 
 

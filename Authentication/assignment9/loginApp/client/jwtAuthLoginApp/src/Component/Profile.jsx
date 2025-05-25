@@ -1,21 +1,26 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../Context/Authcontext.jsx';
-import { UserConsumer } from '../Context/userContext.jsx';
 import Logout from './Logout.jsx';
+import LoginContext  from '../Context/LoginContext.jsx';
+
 
 function Profile() {
 
-  const { user, setUser, logout } = useContext(AuthContext);
+    const { isLoggedIn, setIsLoggedIn} = useContext(LoginContext);
 
   return (
     <>
-    <h1>Profile Page - Hello {user} </h1>
-    <h2>You have successfully logged in!</h2>
-    <Link to="/dashboard">Dashboard</Link>
-    <br />
-    <Link to="/home">Home</Link>
-    <Logout/>
+       <div>
+            {{isLoggedIn} ? <h2> You are logged in</h2> : <h2> you are NOT logged in</h2>}
+            {console.log(`check isLoggedIn: ${isLoggedIn}`)}
+       </div> 
+
+      <h1>Profile Page - Hello</h1>
+      <h2>You have successfully logged in! {isLoggedIn}</h2>
+      <Link to="/dashboard">Dashboard</Link>
+      <Link to="/home">Home</Link>
+      <Logout/>
+
     </>
 
   )

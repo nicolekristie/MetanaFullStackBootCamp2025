@@ -1,6 +1,3 @@
-// 
-
-
 import {
   BrowserRouter as Router,
   Route,
@@ -9,19 +6,28 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Login from "./Component/Login";
-import Dashboard from "./Component/Dashboard";
-import Register from "./Component/Register";
-import Home from "./Component/Home";
-import Profile from "./Component/Profile";
+import Login from "./Component/Login.jsx";
+import Dashboard from "./Component/Dashboard.jsx";
+import Register from "./Component/Register.jsx";
+import Home from "./Component/Home.jsx";
+import Profile from "./Component/Profile.jsx";
 import AdminDashBoard from "./Component/AdminDashboard.jsx";
 import Editor from "./Component/Editor.jsx";
 import Layout from "./Component/Layout.jsx";
 import Unauthorized from "./Component/Unauthorized.jsx";
-import Logout from "./Component/Logout";
-import { AuthProvider } from './Context/AuthContextLatest';
-import { ProtectedRoute } from './Context/ProtectedRoute';
-import Error from './Component/Error';
+import Logout from "./Component/Logout.jsx";
+// import RequireAuth from "./Component/RequireAuth.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
+
+import ProtectedRoute from './Component/ProtectedRoute.jsx';
+
+import { LoginProvider } from "./Context/LoginContext.jsx";
+
+
+
 
 const Roles = {
   'User': 2001,
@@ -32,13 +38,15 @@ const Roles = {
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
   async function isAuth() {
     try {
-      const response = await fetch("http://localhost:8015/auth/is-verify", {
+      const response = await fetch("/auth/is-verify", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -55,36 +63,74 @@ function App() {
     isAuth();
   }, []);
 
-  const storedRole = localStorage.getItem('user_role');
+
+  // const storedToken = localStorage.getItem('token');
+ 
+ 
+  // const setLoggedIn = window.localStorage.getItem("loggedIn")
+  // const storedRole = window.localStorage.getItem('user_role');
+
+   const storedRole = "Admin"
+
+  // console.log(`Is the user logged in ${isLoggedIn}`)
+
+  // const [ loggedIn, setLoggedIn ] =  useState(false);
 
   return (
-    <AuthProvider>
+    <>
+    <LoginProvider>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Layout />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login setAuth={setAuth} />} />
-        <Route path="/register" element={<Register setAuth={setAuth} />} />
-        <Route path="/unauthorized" element={<Unauthorized />} />
+            {/* Public Routes */}
+            {/* {!isLoggedIn && ( */}
+              <>
+                {/* <Route path="/" element={isLoggedIn == "true" ? <Profile /> : <Login />} /> */}
+                 <Route path="/" component={Home}/>
+                <Route path="/home" component={Home} />
+                {/* <Route path="/login" element={<Login />} /> */}
 
-        {/* Protected Routes */}
-        {/* <Route element={<ProtectedRoute />}> */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/logout" element={<Logout setAuth={setAuth} />} />
-        {/* </Route> */}
+                    <Route path="/login" component={Login} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Login />} />
+                {/* <Route path="/layout" element={<Layout />} /> */}
+                {/* <Route path="/adminDashboard" element={<Unauthorized />} /> */}
+              </>
+            {/* )} */}
+   
+              <Route path="/unauthorized" element={<Unauthorized />} />
+                        
+              {/* <Route element={<ProtectedRoute />}> */}
+             
+                  <Route path="/login" element={ <Navigate to="/" />} />
+                  <Route path="/register" element={<Navigate to="/" />} />
+                  {/* <Route path="/dashboard" element={<DashBoard />} /> */}
+                  <Route path="/profile" element={<Profile />} />
 
-        {/* Role-based Routes */}
-        <Route element={<ProtectedRoute allowedRoles={[Roles.Admin]} />}>
-          <Route path="/adminDashboard" element={<AdminDashBoard />} />
-        </Route>
+                  {/* Private route */}
+                  {/* {storedRole = "admin" ? 
+                    <Route path="/adminDashboard" element={<Navigate to="/" />} />
+            
+                  :  <Route path="/adminDashboard" element={<AdminDashBoard />} />
+                  } */}
+             
+              {/* </Route> */}
 
-        <Route element={<ProtectedRoute allowedRoles={[Roles.Editor]} />}>
-          <Route path="/editor" element={<Editor />} />
-        </Route>
-      </Routes>
-    </AuthProvider>
-  );
+                {/* Private routes> Role-based Routes */}  
+                <Route element={<ProtectedRoute allowedRoles={[Roles.Admin]} />}>
+                  <Route path="/adminDashboard" element={<AdminDashBoard />} />
+                </Route>
+
+                <Route element={<ProtectedRoute allowedRoles={[Roles.Editor]} />}>
+                  <Route path="/editor" element={<Editor />} />
+                </Route>
+        </Routes>
+    </LoginProvider>
+  </>
+     
+    
+
+)
+ 
+  
 }
 
 export default App;

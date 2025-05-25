@@ -1,12 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-import { UserConsumer } from '../Context/userContext';
-import Dashboard from './Dashboard'
+import Layout from './Layout';
+
 
 function AdmindDashboard() {
   return (
     <>
-    {/* <Dashboard/> */}
+    <Layout/>
     <h1>Admin Dashboard Page </h1>
     <Link to="/home">Home</Link>
     </>

@@ -59,11 +59,9 @@ router.post("/register", validateInfo, async (req, res) => {
 
     //login route and apply middleware function
 
-    router.post("/login", validateInfo, async (req,res) => {
-        console.log("IN LOGIN ENDPOINT>>>>")
-       
+    router.post("/login", validateInfo, async (req,res) => {       
         //destruct the req.body
-        const {user_email, user_password, role}  = req.body;
+        const {user_email, user_password, role }  = req.body;
 
         if (!user_email || !user_password) {
             return res.status(400).json({message: 'All fields are Required'})
@@ -106,9 +104,6 @@ router.post("/register", validateInfo, async (req, res) => {
             res.status(500).send("Server Error");
         }
      })
-
-
-
 
 
 export default router;

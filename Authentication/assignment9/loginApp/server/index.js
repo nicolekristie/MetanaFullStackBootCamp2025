@@ -4,6 +4,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import router from "./routes/dashboard.js";
 import profileRouter from "./routes/profile.js";
+import adminDashRouter from "./routes/adminDashboard.js"
+
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { AuthProvider } from "../client/jwtAuthLoginApp/src/Context/AuthProvider.jsx"
 // import App from "../client/jwtAuthLoginApp/src/App.jsx";
@@ -52,6 +54,10 @@ import("./routes/jwtAuth.js")
 app.use("/dashboard", router);
 
 app.use("/profile", profileRouter);
+
+app.use("/adminDashboard", adminDashRouter);
+
+// app.use("/login");
 
 
 app.listen(8015, () => {

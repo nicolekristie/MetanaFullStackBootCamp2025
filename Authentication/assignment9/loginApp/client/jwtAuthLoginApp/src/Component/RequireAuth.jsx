@@ -1,7 +1,7 @@
 //create component to help us protect our route
 
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth.js";
+import useAuth from "../Context/useAuth.js";
 
 
 
