@@ -20,9 +20,11 @@ import Logout from "./Component/Logout.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { AuthProvider } from "./Context/Authcontext.jsx";
 
+import { useAuth } from "./Context/Authcontext.jsx";
 
-import ProtectedRoute from './Component/ProtectedRoute.jsx';
+// import ProtectedRoute from './Component/ProtectedRoute.jsx';
 
 import { LoginProvider } from "./Context/LoginContext.jsx";
 
@@ -90,7 +92,7 @@ function App() {
 
                     <Route path="/login" component={Login} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/profile" element={<Login />} />
+                <Route path="/profile" component={Login} />
                 {/* <Route path="/layout" element={<Layout />} /> */}
                 {/* <Route path="/adminDashboard" element={<Unauthorized />} /> */}
               </>

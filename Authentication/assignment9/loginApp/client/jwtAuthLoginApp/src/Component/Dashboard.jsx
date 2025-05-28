@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import Logout from './Logout';
-import { LoginContext } from '../Context/LoginContext.jsx';
+import {LoginContext} from '../Context/LoginContext.jsx';
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import LoginContext  from '../Context/LoginContext.jsx';
+import {LoginContext}  from '../Context/LoginContext.jsx';
 
 
 const Layout = () => {

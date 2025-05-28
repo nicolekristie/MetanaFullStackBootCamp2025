@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Layout from './Layout';
 import Logout from './Logout';
-import LoginContext  from '../Context/LoginContext.jsx';
+import {LoginContext}  from '../Context/LoginContext.jsx';
 
 
 //  const Profile = ({setAuthorized}) => {  //pass in the props
@@ -38,7 +38,7 @@ import LoginContext  from '../Context/LoginContext.jsx';
 
 function Home() {
 
-  const { isLoggedIn, setIsLoggedIn} = useContext(LoginContext); 
+  // const { isLoggedIn, setIsLoggedIn} = useContext(LoginContext); 
 
   return (
     <>

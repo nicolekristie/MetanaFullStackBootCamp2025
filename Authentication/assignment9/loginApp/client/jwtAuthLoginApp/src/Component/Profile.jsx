@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Logout from './Logout.jsx';
-import LoginContext  from '../Context/LoginContext.jsx';
+import {LoginContext } from '../Context/LoginContext.jsx';
 
 
 function Profile() {
