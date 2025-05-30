@@ -10,7 +10,9 @@ import Home from "./Component/Home";
 import Profile from "./Component/Profile";
 import Editor from "./Component/Editor";
 import AdminDashboard from "./Component/AdminDashboard"
+import Users from './Component/Users.jsx';
 import { LoginProvider } from "./Context/LoginContext.jsx";
+
 
 
 // import { LoginContext } from '../Context/LoginContext.jsx';
@@ -25,7 +27,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-  
+       <LoginProvider> 
         <BrowserRouter>
         {/* wrap our main component with the provider */}
   
@@ -39,9 +41,11 @@ root.render(
               <Route path="/register" element={<Register />} />
               <Route path="/editor" element={<Editor />} />
               <Route path="/adminDashboard" element={<AdminDashboard />} />
+              <Route path="/users" element={<Users />} />
               {/* <Route path="/*" element={<App />} />  */}
             </Routes>
         </BrowserRouter>
+        </LoginProvider>
 
   </React.StrictMode>
 );

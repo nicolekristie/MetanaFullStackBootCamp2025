@@ -8,6 +8,8 @@ function AdmindDashboard() {
     <Layout/>
     <h1>Admin Dashboard Page </h1>
     <Link to="/home">Home</Link>
+    <br />
+     <Link to="/users">Users</Link>
     </>
 
   )

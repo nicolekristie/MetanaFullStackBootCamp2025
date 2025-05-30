@@ -42,7 +42,7 @@ const Register = () => {
             body: JSON.stringify(body)   
            });
 
-           navigate('/profile');
+           navigate('/login');
 
         } catch (err){
             console.error(err.message)

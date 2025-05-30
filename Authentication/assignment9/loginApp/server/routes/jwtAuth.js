@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
-import pool from "/Users/nicole/MetanaFullstackBootCamp/MetanaFullStackBootCamp2025/Authentication/assignment9/loginApp/server/db.js";
+// import pool from "/Users/nicole/MetanaFullstackBootCamp/MetanaFullStackBootCamp2025/Authentication/assignment9/loginApp/server/db.js";
+import pool from "../db.js";
 import argon2 from "argon2";
 import validator from "validator";
 import jsonwebtoken from 'jsonwebtoken';
