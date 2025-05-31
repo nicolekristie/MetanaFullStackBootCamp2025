@@ -1,46 +1,84 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate, Navigate } from 'react-router-dom';
 import Logout from './Logout';
-import {LoginContext} from '../Context/LoginContext.jsx';
-
-
+import { useLogin } from '../Context/LoginContext';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
-  
+    const { user_role, isLoggedIn } = useLogin();
+    const navigate = useNavigate();
+    const isAdmin = user_role === 'admin' || localStorage.getItem('user_role') === 'admin';
+
+    useEffect(() => {
+        const currentPath = window.location.pathname;
+        if (currentPath === '/users' && !isAdmin) {
+            navigate('/unauthorized');
+        }
+    }, [isAdmin, navigate]);
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" />;
+    }
+
     return (
-        <div>
-          <h1>DASHBOARD PAGE...........................................</h1>
-            <nav className="topnav-centered" style={styles.navbar}>
-              <Link to="/register" style={styles.link}>Register</Link> 
-              <Link to="/profile" style={styles.link}>Profile</Link>
-              <Link to="/dashboard" style={styles.link}>Dashboard</Link>
+        <div style={styles.container}>
+            <nav style={styles.navbar}>
+                <div style={styles.navLinks}>
+                    <Link to="/home" style={styles.link}>Home</Link>
+                    <Link to="/profile" style={styles.link}>Profile</Link>
+                    {isAdmin && (
+                        <Link to="/users" style={styles.link}>Users</Link>
+                    )}
+                </div>
+                <div style={styles.logoutContainer}>
+                    <Logout />
+                </div>
             </nav>
             <main style={styles.main}>
-              <Outlet /> {/* This will render the matched route's component */}
+                <Outlet />
             </main>
-            <Logout/>
         </div>
-
-  );
+    );
 };
 
-    const styles = {
-        navbar: {
-          display: 'flex', 
-          gap: '1rem',
-          backgroundColor: 'green',
-          padding: '1rem',
-          position: 'fixed',
-          top: 0, 
-          width: 800,
-        },
-        link: {
-          color: 'white',
-          textDecoration: 'none',
-        },
-        main: {
-          padding: '2rem',
-        },
-      };
+const styles = {
+    container: {
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    navbar: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'green',
+        padding: '1rem 2rem',
+        position: 'fixed',
+        top: 0,
+        width: '100%',
+        boxSizing: 'border-box',
+        zIndex: 1000
+    },
+    navLinks: {
+        display: 'flex',
+        gap: '1rem'
+    },
+    link: {
+        color: 'white',
+        textDecoration: 'none',
+        padding: '0.5rem 1rem',
+        borderRadius: '4px',
+        transition: 'background-color 0.2s',
+        ':hover': {
+            backgroundColor: 'rgba(255,255,255,0.1)'
+        }
+    },
+    logoutContainer: {
+        marginLeft: 'auto'
+    },
+    main: {
+        padding: '5rem 2rem 2rem',
+        flex: 1
+    }
+};
 
-
-export default Dashboard
+export default Dashboard;

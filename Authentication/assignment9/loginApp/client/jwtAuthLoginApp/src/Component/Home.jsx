@@ -1,66 +1,34 @@
-import React, {useContext} from 'react'
-import { Link } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
+import React from 'react';
 import Layout from './Layout';
-import Logout from './Logout';
-import {LoginContext}  from '../Context/LoginContext.jsx';
-
-
-//  const Profile = ({setAuthorized}) => {  //pass in the props
-
-//   const [role, setRole] = useState("null");
-//    const { isLoggedIn, setIsLoggedIn} = useContext(LoginContext);
-
-
-//   const handleClick = async (e) => {
-//        e.preventDefault();
-//       try{
-
-//         const response = await fetch("http://localhost:8015/profile" , {
-//           method: "GET",
-//           // headers: { "role": "user_role" },
-//         });
-
-//         const parseRes = await response.json();
-//         localStorage.setItem("user_role", parseRes.user_role);
-
-//        if (parseRes.user_role) {
-//         localStorage.setItem("user_role", parseRes.user_role);
-//         // setAuthorized(true);
-//        } else {
-//         // setAuthorized(false);
-//        }
-//     } catch (err) {
-//       console.error(err.message);
-//     }   
-//   };
-// }
 
 function Home() {
-
-  // const { isLoggedIn, setIsLoggedIn} = useContext(LoginContext); 
-
   return (
-    <>
-       <Layout/>
-      <h1 className='home-text'>Home Page</h1>
-      <div className='home-container'>      
-        <nav className="nav-bar-container">
-          <div className='home-nav-link'>
-            {/* <Link to='/login' onClick={ ()=>handleClick()}>Log in</Link> |
-            <Link to='profile'>Profile</Link>
-            <Link to='/register'>Register</Link> |
-            <Link to='/dashboard'>Dashboard</Link>
-            <Link to='/editor'>Editor</Link>
-
-            <Link to='/adminDashboard'>Dashboard</Link> */}
-          </div>
-          <Logout />
-        </nav> 
- 
-     </div> 
-    </>
-  )
+    <div style={styles.container}>
+      <h1 style={styles.title}>Welcome Home</h1>
+      <div style={styles.content}>
+        <p>Welcome to our application! You are now logged in.</p>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+const styles = {
+  container: {
+    padding: '20px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    textAlign: 'center'
+  },
+  title: {
+    color: '#333',
+    marginBottom: '20px'
+  },
+  content: {
+    backgroundColor: '#f5f5f5',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+  }
+};
+
+export default Home;

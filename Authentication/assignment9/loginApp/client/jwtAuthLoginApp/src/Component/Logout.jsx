@@ -1,29 +1,40 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import {LoginContext}  from '../Context/LoginContext.jsx';
-
+import { useLogin } from '../Context/LoginContext.jsx';
 
 const Logout = () => {
   const navigate = useNavigate();
-
-
-  // const {isLoggedIn, setIsLoggedIn} =useContext(LoginContext);
+  const { logout } = useLogin();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user_role');
-    localStorage.removeItem('user_name');
-    localStorage.setItem("loggedIn", false);
+    logout(); // This will clear all state and localStorage
     navigate('/login');
   };
 
   return (
-    <>
-      <button className='log-out-btn' onClick={handleLogout}>
-        Logout
-      </button>
-    </>
+    <button 
+      style={styles.button}
+      onClick={handleLogout}
+    >
+      Logout
+    </button>
   );
+};
+
+const styles = {
+  button: {
+    padding: '8px 16px',
+    backgroundColor: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    transition: 'background-color 0.2s',
+    ':hover': {
+      backgroundColor: '#c82333'
+    }
+  }
 };
 
 export default Logout;
