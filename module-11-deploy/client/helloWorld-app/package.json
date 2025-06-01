@@ -9,7 +9,7 @@
   "preview": "vite preview",
   "build": "vite build",
   "heroku-postbuild": "npm run build",
-  "start": "serve -s dist -l $PORT",
+  "start": "serve -s dist -l $PORT"
   },
   "dependencies": {
     "react": "^19.1.0",
