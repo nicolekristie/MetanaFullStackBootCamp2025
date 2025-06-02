@@ -15,7 +15,7 @@ import usersRouter from "./routes/users.js";
 
 import cors from "cors";
 const corsOption = {
-  origin: ["http://localhost:5173", "http://localhost:5176"], //allow both ports
+  origin: ["http://localhost:5173", "http://localhost:5176", "http://54.146.154.147"], //allow both ports
 };
 
 //middleware
