@@ -15,9 +15,18 @@ body {
   padding: 50px;
 }
 
-
-
-
+.form-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+@media (max-width: 600px) {
+  .form-container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+}
 
 .nav-bar-container{
   display: flex;

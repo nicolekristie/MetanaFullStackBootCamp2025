@@ -4,18 +4,20 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import router from "./routes/dashboard.js";
 import profileRouter from "./routes/profile.js";
-import adminDashRouter from "./routes/adminDashboard.js"
+import adminDashRouter from "./routes/adminDashboard.js";
 import usersRouter from "./routes/users.js";
 
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { AuthProvider } from "../client/jwtAuthLoginApp/src/Context/AuthProvider.jsx"
 // import App from "../client/jwtAuthLoginApp/src/App.jsx";
 
-
-
 import cors from "cors";
 const corsOption = {
-  origin: ["http://localhost:5173", "http://localhost:5176", "http://54.146.154.147:3000"], //allow both ports
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5176",
+    "http://54.146.154.147:3000",
+  ], //allow both ports
 };
 
 //middleware
@@ -58,10 +60,9 @@ app.use("/profile", profileRouter);
 
 app.use("/adminDashboard", adminDashRouter);
 
-app.use("/users", usersRouter)
+app.use("/users", usersRouter);
 
 // app.use("/login");
-
 
 app.listen(8015, () => {
   console.log("Server is running on port 8015");
