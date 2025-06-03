@@ -34,9 +34,10 @@ const Register = () => {
  
       console.log('Form Submitted:', formData);
         e.preventDefault();  //by default the page refreshes, this prevents the page from being refreshed
+        const API_URL = import.meta.env.VITE_API_URL;
         try {
           const body = formData;
-           const response = await fetch("http://localhost:8015/auth/register", {
+           const response = await fetch(`${API_URL}/auth/register`, {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(body)   
