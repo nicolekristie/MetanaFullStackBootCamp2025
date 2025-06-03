@@ -68,7 +68,7 @@ const Login = () => {
             onChange={onChange}
             style={styles.input}
           />
-          <input
+          <input 
             type="password"
             name="user_password"
             placeholder="Password"
@@ -123,7 +123,9 @@ const styles = {
     padding: '10px',
     borderRadius: '4px',
     border: '1px solid #ddd',
-    fontSize: '16px'
+    fontSize: '16px',
+    backgroundColor: '#f0f0f0', // light gray background
+    color: '#333'
   },
   button: {
     padding: '12px',
