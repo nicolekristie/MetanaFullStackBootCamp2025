@@ -40,5 +40,10 @@
     "jest-environment-jsdom": "^30.0.0-beta.3",
     "text-encoding": "^0.7.0",
     "vite": "^6.3.5"
+  },
+  "jest": {
+    "preset": "babel-jest",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
   }
 }
