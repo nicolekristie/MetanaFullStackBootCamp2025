@@ -1,11 +1,12 @@
 export async function fetchUsers() {
+  const API_URL = import.meta.env.VITE_API_URL;
   try {
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('No authentication token found');
     }
 
-    const response = await fetch("http://localhost:8015/users", {
+    const response = await fetch(`${API_URL}/users`, {
       method: 'GET',
       headers: {
         'token': token,
