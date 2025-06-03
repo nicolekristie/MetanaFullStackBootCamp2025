@@ -11,6 +11,7 @@ export const LoginProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [firstName, setFirstName] = useState("");
 
+
   // Check localStorage when the app loads
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,13 +33,14 @@ export const LoginProvider = ({ children }) => {
   }, []);
 
   const login = async (user_email, user_password) => {
+    const API_URL = import.meta.env.VITE_API_URL;
     try {
       const body = { user_email, user_password };
       let firstName = user_email.split("@");
       let name = firstName[0];
       setFirstName(name);
 
-      const response = await fetch("http://localhost:8015/auth/login", {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
