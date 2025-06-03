@@ -33,9 +33,13 @@ describe('Sidebar Component', () => {
     ];
 
     links.forEach(linkText => {
-      const linkElement = screen.getByRole('link', { name: linkText });
+      // const linkElement = screen.getByRole('link', { name: linkText });
+      const linkElement = screen.queryByRole("link", { name: new RegExp(`^${linkText}$`, "i") });
+      expect(linkElement).toBeTruthy();
+      expect(linkElement).toHaveAttribute("href");
+
     //   expect(linkElement).toBeInTheDocument();
-      expect(linkElement).toHaveAttribute('href');
+      // expect(linkElement).toHaveAttribute('href');
     });
   });
 });
