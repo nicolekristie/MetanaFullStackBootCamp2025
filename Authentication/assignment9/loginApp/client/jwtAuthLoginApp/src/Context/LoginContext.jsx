@@ -39,8 +39,6 @@ export const LoginProvider = ({ children }) => {
       setFirstName(name);
 
       // Make the API call to login 
-      console.log("result....")
-       console.log({ user_email, user_password });
       const response = await fetch("http://localhost:8015/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
