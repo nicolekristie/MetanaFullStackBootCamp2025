@@ -5,7 +5,7 @@ export async function fetchUsers() {
       throw new Error('No authentication token found');
     }
 
-    const response = await fetch("http://localhost:8015/users", {
+    const response = await fetch("http://localhost:8015/auth/users", {
       method: 'GET',
       headers: {
         'token': token,

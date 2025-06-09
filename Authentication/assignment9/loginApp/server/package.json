@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2,react"
+    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2,react",
+    "install:all": "npm install && cd../client/jwtAuthLoginApp && npm install && ../../server"
   },
   "keywords": [],
   "author": "",

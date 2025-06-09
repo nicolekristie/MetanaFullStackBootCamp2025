@@ -15,7 +15,7 @@ import usersRouter from "./routes/users.js";
 
 import cors from "cors";
 const corsOption = {
-  origin: ["http://localhost:5173"], //only accept requests from FE server which is the port that Vite servers run on
+  origin: ["http://localhost:5173","http://localhost:5174","http://54.146.154.147"], //only accept requests from FE server which is the port that Vite servers run on
 };
 
 //middleware

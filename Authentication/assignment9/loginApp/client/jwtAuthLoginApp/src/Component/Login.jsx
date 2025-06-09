@@ -60,7 +60,7 @@ const Login = () => {
       <div style={styles.loginBox}>
         <h1 style={styles.title}>Login</h1>
         <form onSubmit={handleSubmit} style={styles.form}>
-          <input
+          <input className='input'
             type="email"
             name="user_email"
             placeholder="Email"
@@ -68,7 +68,7 @@ const Login = () => {
             onChange={onChange}
             style={styles.input}
           />
-          <input
+          <input className='input'
             type="password"
             name="user_password"
             placeholder="Password"
@@ -123,8 +123,10 @@ const styles = {
     padding: '10px',
     borderRadius: '4px',
     border: '1px solid #ddd',
-    fontSize: '16px'
-  },
+    fontSize: '16px',
+    backgroundColor: '#f0f8ff',
+    color: '#222'
+    },
   button: {
     padding: '12px',
     backgroundColor: 'green',

@@ -80,9 +80,12 @@ router.post("/register", validateInfo, async (req, res) => {
 
            // compare password: check if incoming password is the same as the database password
 
+           console.log('DB hash:', user.rows[0].user_password);
+            console.log('Input password:', user_password);
+
             const isMatch = await argon2.verify(user.rows[0].user_password, user_password);
                 if (!isMatch) {
-                    res.status(400).json({ message: "Invalid Credentials" });
+                    return res.status(400).json({ message: "Invalid Credentials" });
                 }
     
             // create JWT token      
@@ -106,5 +109,28 @@ router.post("/register", validateInfo, async (req, res) => {
         }
      })
 
+router.get("/users", async (req, res) => {
+  try {
+    const users = await pool.query("SELECT user_id, user_name, user_email, user_role FROM users");
+    res.json(users.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+
+
+
+
+router.get("/users/count", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT COUNT(*) FROM users");
+    res.json({ count: result.rows[0].count });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 export default router;
