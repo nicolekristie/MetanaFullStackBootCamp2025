@@ -80,9 +80,6 @@ router.post("/register", validateInfo, async (req, res) => {
 
            // compare password: check if incoming password is the same as the database password
 
-           console.log('DB hash:', user.rows[0].user_password);
-            console.log('Input password:', user_password);
-
             const isMatch = await argon2.verify(user.rows[0].user_password, user_password);
                 if (!isMatch) {
                     return res.status(400).json({ message: "Invalid Credentials" });
