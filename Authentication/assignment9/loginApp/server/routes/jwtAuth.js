@@ -104,7 +104,11 @@ router.post("/register", validateInfo, async (req, res) => {
             console.error(err.message);
             res.status(500).send("Server Error");
         }
-     })
+     });
+
+    router.get('/', (req, res) => {
+        res.send('Hello World!');
+    });
 
 router.get("/users", async (req, res) => {
   try {
@@ -115,9 +119,6 @@ router.get("/users", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
-
-
 
 
 router.get("/users/count", async (req, res) => {

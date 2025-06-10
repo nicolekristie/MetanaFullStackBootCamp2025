@@ -6,6 +6,7 @@ import router from "./routes/dashboard.js";
 import profileRouter from "./routes/profile.js";
 import adminDashRouter from "./routes/adminDashboard.js"
 import usersRouter from "./routes/users.js";
+import jwtAuthRouter from "./routes/jwtAuth.js";
 
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { AuthProvider } from "../client/jwtAuthLoginApp/src/Context/AuthProvider.jsx"
@@ -13,9 +14,11 @@ import usersRouter from "./routes/users.js";
 
 
 
+
 import cors from "cors";
 const corsOption = {
-  origin: ["http://localhost:5173","http://localhost:5174","http://54.146.154.147"], //only accept requests from FE server which is the port that Vite servers run on
+  origin: ["http://localhost:5173","http://localhost:5174","http://54.146.154.147","https://loginauth.shebuilds.it.com"], //only accept requests from FE server which is the port that Vite servers run on
+  credentials: true
 };
 
 //middleware
@@ -23,6 +26,18 @@ app.use(express.json()); //req.body
 // app.use(cors());
 
 app.use(cors(corsOption));
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -42,14 +57,22 @@ app.use(cors(corsOption));
 //ROUTES
 //register and login routes
 
-//activate routes
-import("./routes/jwtAuth.js")
-  .then((jwtAuth) => {
-    app.use("/auth", jwtAuth.default);
-  })
-  .catch((err) => {
-    console.error("Failed to load jwtAuth routes:", err);
+
+app.get('/', (req, res) => {
+  res.json({ 
+      message: "Welcome to Login Auth API",
+      endpoints: {
+          auth: "/auth",
+          dashboard: "/dashboard",
+          profile: "/profile",
+          adminDashboard: "/adminDashboard",
+          users: "/users"
+      }
   });
+});
+
+//activate routes
+app.use("/auth", jwtAuthRouter);
 
 //create a dashboard route
 app.use("/dashboard", router);
@@ -60,7 +83,6 @@ app.use("/adminDashboard", adminDashRouter);
 
 app.use("/users", usersRouter)
 
-// app.use("/login");
 
 
 app.listen(8015, () => {
