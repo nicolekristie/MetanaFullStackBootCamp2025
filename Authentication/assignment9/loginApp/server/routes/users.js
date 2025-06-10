@@ -2,6 +2,10 @@ import express from "express";
 const router = express.Router();
 import pool from "../db.js";
 
+
+
+
+
 router.get("/", async (req, res) => {
     try {
         const user = await pool.query("SELECT * FROM users");   

@@ -107,7 +107,14 @@ router.post("/register", validateInfo, async (req, res) => {
      });
 
     router.get('/', (req, res) => {
-        res.send('Hello World!');
+        res.json({
+            message: "Authentication API endpoints",
+            endpoints: {
+                register: "POST /auth/register",
+                login: "POST /auth/login",
+                verify: "GET /auth/is-verify"
+            }
+        });
     });
 
 router.get("/users", async (req, res) => {
