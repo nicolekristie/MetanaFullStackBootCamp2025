@@ -22,7 +22,7 @@ PATCH http://localhost:3000/blogs/67e5b5def1c9eb3852d02b99
 Content-Type: application/json
 
 {
-    "title": "Blog Updated"
+    "title": "Blog Updated Today"
 }
 
 ###
@@ -38,9 +38,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "TesterThree",
-    "email": "testthree@gmail.com",
-    "password": "test1234"
+    "username": "Testerfour",
+    "email": "testfour@gmail.com",
+    "password": "testerFour123"
 }
 
 ###

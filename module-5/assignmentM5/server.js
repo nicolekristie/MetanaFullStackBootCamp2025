@@ -2,17 +2,19 @@
 
 // Learn to build a functional backend API using Node.js and MongoDB. Implement data models, perform 
 // CRUD operations, and connect the backend to the frontend in later modules.
-
-
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 const app = express();
 import mongoose from 'mongoose';
 import blogRouter from './routes/blogs.js';
 import userRouter from './routes/users.js';
-import { DATABASE_URL } from './config.js';
+
 // import bcrypt from 'bcrypt';
 
 // const hash = bcrypt.hash(password, 10);
+
+const DATABASE_URL = process.env.DATABASE_URL;
 
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true, dbName: 'Blogs'});
 
