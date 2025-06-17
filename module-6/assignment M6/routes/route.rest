@@ -3,18 +3,18 @@ GET http://localhost:3000/blogs
 ###
 
 
-GET http://localhost:3000/blogs/555
+GET http://localhost:3000/blogs/300
 
 ###
 POST http://localhost:3000/blogs
 Content-Type: application/json
 
 {
-    "blog_id": 669,
-    "title": "Blog 669",
-    "blog_content": "about my new blog659",
-    "author": "Test Author Blogger669",
-    "created": "2025-04-03"
+    "blog_id": 670,
+    "title": "Blog 670",
+    "blog_content": "about my new blog670",
+    "author": "Test Author Blogger670",
+    "created": "2025-06-17"
 }
 
 ###

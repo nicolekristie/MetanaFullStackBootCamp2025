@@ -25,6 +25,10 @@ app.set('view engine', 'ejs');
 app.use('/blogs', router);
 app.use('/users', userRouter);
 
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
+
 //START node.js server
 app.listen(3000, ()=>{
     console.log("server is running......")
