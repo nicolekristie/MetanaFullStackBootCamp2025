@@ -40,3 +40,43 @@
 .read-the-docs {
   color: #888;
 }
+
+.blog-card {
+  background: #fff;
+  color: #222;         /* <-- Add this line for dark text */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  transition: box-shadow 0.2s;
+}
+.blog-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.blog-card h3 {
+  margin-top: 0;
+}
+.blog-card .meta {
+  color: #555;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 1rem 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* Add padding to the top of your main content */
+.main-content {
+  padding-top: 70px; /* Adjust if your navbar is taller/shorter */
+}

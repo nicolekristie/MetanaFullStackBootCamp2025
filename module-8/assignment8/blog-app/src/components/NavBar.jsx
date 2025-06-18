@@ -27,7 +27,7 @@ function NavBar() {
           <NavbarLinkContainer>
             <NavbarLink to="/"> Home</NavbarLink>
             <NavbarLink className="blog-list"to="/bloglist"> BlogList</NavbarLink>
-            <NavbarLink to="/blogdetail"> BlogDetail</NavbarLink>
+  
             <NavbarLink to="/admindashboard"> AdminDashboard</NavbarLink>
             <OpenLinksButton onClick={()=> {
                             setExtendnavBar((curr)=> !curr);
@@ -42,7 +42,7 @@ function NavBar() {
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
           <NavbarLinkExtended to="/bloglist"> BlogList</NavbarLinkExtended>
-          <NavbarLinkExtended to="/blogdetail"> BlogDetail</NavbarLinkExtended>
+           <NavbarLinkExtended to="/blogs"> BlogListPage</NavbarLinkExtended>
           <NavbarLinkExtended to="/admindashboard">
             {" "}
             AdminDashboard

@@ -1,42 +1,43 @@
-import pkg from "pg";
-const { Client } = pkg;
+import dotenv from "dotenv";
+dotenv.config();
+import { Client } from "pg";
 import express from "express";
+import cors from "cors";
 const app = express();
 import { DATABASE_PASSWORD, USER } from "../config.js";
-import router from "../server/routes/blogs/blogs.js"              
+import router from "../server/routes/blogs/blogs.js";
 import { router as userRouter } from "../server/routes/users/users.js";
-import dotenv from "dotenv";
-import * as _ from 'lodash';
-
+import * as _ from "lodash";
 import process from "process";
 
-// if (typeof global === "undefined") {
-//   var global = window;
-// }
-
 global.process = process;
+
+console.log("DB password:", process.env.DATABASE_PASSWORD);
 
 export const client = new Client({
   user: "postgres",
   host: "localhost",
   database: "Blogs",
-  password: "t3st1234",
+  password: process.env.DATABASE_PASSWORD,
   port: 5432,
 });
 
 client.connect().then(() => console.log("connected"));
 
-//setup server to accept json as a body
+app.use(cors());
 app.use(express.json());
 app.set("view engine", "ejs");
+
+// Make the client available to all routes
+app.locals.client = client;
 
 app.use("/blogs", router);
 app.use("/users", userRouter);
 
-//START node.js server
-app.listen(3000, () => {
-  console.log("server is running......");
+app.get("/test", (req, res) => {
+  res.send("Test route works!");
 });
 
-// http://localhost:3000/users/:id  (give as axios response)
-// http://localhost:3000/blogs/:id
+app.listen(5050, () => {
+  console.log("server is running......");
+});
