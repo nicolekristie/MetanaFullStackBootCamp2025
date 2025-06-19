@@ -1,33 +1,127 @@
-Build the frontend of the application using React, integrate with the backend APIs 
-developed in Modules 5 and 6, and implement the UI/UX designs from Module 7.
+# Blog App
 
-Build a React frontend that implements the UI/UX designs created in the previous module.
-Integrate your React components with the backend API to fetch and display data dynamically.
-Implement state management to manage and pass data between components.
-Use React Router to set up routing for different views (e.g., Homepage, Blog Details, User Profile).
+A full-stack blog application built with React (frontend), Express/Node.js (backend), and PostgreSQL (database).
 
+---
 
-Deliverables:
+## Features
 
-Created React app with components
+- View a list of blogs
+- Click a blog to view its details
+- Admin dashboard (optional)
+- Add, update, and delete blogs (if implemented)
+- Responsive navigation bar
 
-Used Styling with Babel and styled components
+---
 
-Passed props to change button color
+## Project Structure
 
-Created Button component with buttonLabel as a prop
+```
+module-8/assignment8/blog-app/
+├── src/
+│   ├── components/
+│   │   ├── BlogList.jsx
+│   │   ├── BlogListPage.jsx
+│   │   ├── NavBar.jsx
+│   │   └── ...
+│   ├── pages/
+│   │   ├── BlogPage.jsx
+│   │   ├── BlogDisplay.jsx
+│   │   ├── Home.jsx
+│   │   └── ...
+│   ├── styles/
+│   │   └── ...
+│   ├── App.jsx
+│   └── main.js
+├── server/
+│   ├── routes/
+│   │   └── blogs/
+│   │       └── blogs.js
+│   ├── controllers/
+│   │   └── blogsController.js
+│   └── ...
+├── package.json
+└── README.md
+```
 
-Created Global Styles -to style things that are not components
+---
 
-Created a responsive Navbar with Styled Components
+## Getting Started
 
-Created the following links in the Navbar to navigate to respective pages once clicked:
+### 1. **Clone the repository**
 
-* Homepage
-* Blog List
-* Blog Detail Page
-* Admin Dashboard 
+```sh
+git clone <repo-url>
+cd module-8/assignment8/blog-app
+```
 
-Used axios to get all blogs from endpoint:
+### 2. **Install dependencies**
 
-http://localhost:3500/blogs
+```sh
+npm install
+```
+
+### 3. **Set up the database**
+
+- Make sure PostgreSQL is running.
+- Create a database named `Blogs`.
+- Create a `blogs` table with columns:
+  - `blog_id` (primary key, integer)
+  - `title` (text)
+  - `blog_content` (text)
+  - `author` (text)
+  - `created` (timestamp)
+
+### 4. **Configure environment variables**
+
+Create a `.env` file in the root with your database password:
+
+```
+DATABASE_PASSWORD=your_postgres_password
+```
+
+### 5. **Start the backend**
+
+```sh
+node src/main.js
+```
+or (if using nodemon)
+```sh
+nodemon src/main.js
+```
+
+### 6. **Start the frontend**
+
+```sh
+npm run dev
+```
+
+---
+
+## Proxy Setup (Optional but Recommended)
+
+To avoid CORS issues and use relative API paths, add this to your `package.json`:
+
+```json
+"proxy": "http://localhost:5050"
+```
+
+Then restart your frontend dev server.
+
+---
+
+## Usage
+
+- Visit [http://localhost:5173](http://localhost:5173) in your browser.
+- Click "BlogList" in the navbar to view all blogs.
+- Click a blog title to view its details.
+
+---
+
+## Troubleshooting
+
+- If blog details show "By | Invalid Date", ensure your `/blogs/:id` backend route returns a single blog object with `author` and `created` fields.
+- If you see HTML instead of JSON in API responses, check your proxy setup and use the correct API URLs.
+- Always restart your backend after making changes to server code.
+
+---

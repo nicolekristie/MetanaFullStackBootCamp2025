@@ -1,0 +1,29 @@
+{
+  "name": "module-7",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.4",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "pg": "^8.14.1",
+    "react-scripts": "^5.0.1",
+    "tailwindcss-cli": "^0.1.2"
+  },
+  "devDependencies": {
+    "@rsbuild/plugin-lightningcss": "^0.7.10",
+    "tailwindcss": "^4.1.4"
+  },
+  "overrides": {
+    "@parcel/watcher": "2.1.0"
+  }
+}

@@ -1,0 +1,59 @@
+loginauth.shebuilds.it.com {
+    # Enable HTTPS with automatic SSL certificate
+    tls {
+        protocols tls1.2 tls1.3
+    }
+
+    # Enable Gzip compression
+    encode zstd gzip
+
+    # Serve static files from the React app build directory
+    root * /home/ubuntu/loginApp/client/dist
+
+    # Try files and fallback to index.html for SPA routing
+    try_files {path} /index.html
+
+    # Enable static file server
+    file_server
+
+    # Proxy API requests to the Node.js server
+    handle /api/* {
+        reverse_proxy localhost:8015
+    }
+
+    handle /auth/* {
+        reverse_proxy localhost:8015
+    }
+
+    handle /dashboard/* {
+        reverse_proxy localhost:8015
+    }
+
+    handle /profile/* {
+        reverse_proxy localhost:8015
+    }
+
+    handle /adminDashboard/* {
+        reverse_proxy localhost:8015
+    }
+
+    handle /users/* {
+        reverse_proxy localhost:8015
+    }
+
+    # Add security headers
+    header {
+        # Enable HSTS
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        # Disable FLoC tracking
+        Permissions-Policy "interest-cohort=()"
+        # XSS Protection
+        X-XSS-Protection "1; mode=block"
+        # Prevent clickjacking
+        X-Frame-Options "DENY"
+        # Prevent MIME type sniffing
+        X-Content-Type-Options "nosniff"
+        # Referrer policy
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+} 

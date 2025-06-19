@@ -1,0 +1,18 @@
+{
+  "employee": [
+    {
+      "id": "a702",
+      "name": "kelly",
+      "email": "kelly@test.com",
+      "phone": "5558983333",
+      "isActive": "true"
+    },
+    {
+      "id": "7721",
+      "name": "lisa",
+      "email": "lisa@test.com",
+      "phone": "555-374-3838",
+      "isActive": "true"
+    }
+  ]
+}

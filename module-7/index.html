@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assignment_M7/main.css" rel="stylesheet" />
+    <link href="./src/input.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdeliver.net/npm/@tailwindcss/browser@4"></script> 
+    <script src="config.js"></script>
+    <title>Food Blog</title>
+  </head>
+  <body class=".bg-gray-500">
+    <img src="./assignment_M7/images/food.jpeg" alt="Food" />
+    <img
+      src="./assignment_M7/images/search.png"
+      alt="search"
+      width="60"
+      height="35"
+      align="right"
+    />
+    <h1 align="center">FOODIES BLOG</h1>
+    <div class="btn-container" align="center">
+      <button type="button">HOME</button>
+      <button type="button">BLOG LIST</button>
+      <button type="button">BLOG DETAIL</button>
+      <button type="button">ADMIN DASHBOARD</button>
+    </div>
+    <div>
+      <br /><br /><br />
+      <h2>*******************TRENDING CATAGORIES**********************</h2>
+    </div>
+    <div class="food-container">
+      <img
+        src="./assignment_M7/images/pasta.jpg"
+        alt="Pasta"
+        width="260"
+        height="200"
+      />
+      <img
+        src="./assignment_M7/images/chicken.jpg"
+        alt="Chicken"
+        width="260"
+        height="200"
+      />
+      <img
+        src="./assignment_M7/images/sideDishes.jpg"
+        alt="Side Dishes"
+        width="260"
+        height="200"
+      />
+      <br /><br />
+    </div>
+
+    <div><span>SUBSCRIBE TO GET FREE RECIPES SENT TO YOUR INBOX!</span></div>
+    <br /><br />
+  </body>
+  <form>
+    <label for="fullName">Name</label><br />
+    <input type="text" id="fname" name="fname" /><br /><br />
+    <label for="emailAddress">Email</label><br />
+    <input type="text" id="email" name="email" /><br /><br />
+    <input type="submit" value="Click to Subscribe" />
+  </form>
+</html>
