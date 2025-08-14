@@ -1,12 +1,53 @@
-# React + Vite
+# JWT Auth Login App (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React frontend for the JWT Authentication Login App, built with Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Modern React (with hooks)
+- Vite for fast development and builds
+- Authentication UI (login, register, protected routes)
+- Connects to a Node.js/Express backend
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Install dependencies
+
+```sh
+npm install
+```
+
+### 2. Start the development server
+
+```sh
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173).
+
+### 3. Build for production
+
+```sh
+npm run build
+```
+
+### 4. Preview production build
+
+```sh
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+  components/      # React components
+  pages/           # Page components
+  App.jsx          # Main app component
+  main.jsx         # Entry point
+```
+
+## Environment Variables
+
+Create a `.env` file for any environment-specific variables (e.g., API base URL).
+
